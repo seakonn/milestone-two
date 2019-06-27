@@ -12,6 +12,8 @@ const blueButton = document.getElementById("blue-button");
 //holds current sequence in a value
 //holds current score in a value
 function GameState() {
+    
+    //stores the lights lit so far by the game
     var sequence = [];
 }
 
@@ -25,5 +27,15 @@ function newGame() {
 //for the player to see
 function lightSequence() {
     
+    //light all the lights lit so far
     
+    //light a random light
+    //pick a random number between 1 and 4
+    
+    //store this new light in the sequence
+    
+}
+
+for(var i=0; i<50; i++) {
+console.log(Math.floor(Math.random()*4)+1);
 }
