@@ -21,3 +21,27 @@
     width: 200px;
     height: 200px;
 }
+
+.lit-green-button {
+    background-color: #afffab;
+    width: 200px;
+    height: 200px;
+}
+
+.lit-red-button {
+    background-color: #ff8080;
+    width: 200px;
+    height: 200px;
+}
+
+.lit-yellow-button {
+    background-color: #fffd94;
+    width: 200px;
+    height: 200px;
+}
+
+.lit-blue-button {
+    background-color: #8383f7;
+    width: 200px;
+    height: 200px;
+}
