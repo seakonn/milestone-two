@@ -1,7 +1,9 @@
 //modal for rules button
 
 
-//create button objects
+//creating button objects to store values associated with them
+//the refNumber uniquely identifies the button for use with any
+//random numbers generated
 
 const greenButton = {
     normalClass: "green-button",
@@ -102,6 +104,28 @@ function lightSequence() {
     //store this new light in the sequence
     
 }
+
+//takes in a number between 0 and 3 and returns the 
+//button object associated with that number
+function numberToColour(num) {
+    
+    switch(num){
+        case 0:
+            return greenButton;
+            
+        case 1:
+            return redButton;
+            
+        case 2:
+            return yellowButton;
+            
+        case 3:
+            return blueButton;
+            
+    }
+}
+
+
 
 //turns a single light briefly brighter then returns to its original colour
 //it takes in an object conatining a HTML element, and the two classes
