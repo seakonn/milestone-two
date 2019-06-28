@@ -4,6 +4,7 @@
 //creating button objects to store values associated with them
 //the refNumber uniquely identifies the button for use with any
 //random numbers generated
+//---DELETE REFNUMBER?-----
 
 const greenButton = {
     normalClass: "green-button",
@@ -131,15 +132,15 @@ function numberToColour(num) {
 //it takes in an object conatining a HTML element, and the two classes
 //which are to be alternately applied to the element
 //it assumes that one of the classes supplied is already applied
-function toggleLight(element, classOne, classTwo) {
+function toggleLight(button) {
     
     //first turn the light on
-    element.classList.toggle(classOne);
-    element.classList.toggle(classTwo);
+    button.divElement.classList.toggle(button.normalClass);
+    button.divElement.classList.toggle(button.litClass);
     
     //now toggle the light off, after a small time delay
-    setTimeout(function() { element.classList.toggle(classOne) }, 500);
-    setTimeout(function() { element.classList.toggle(classTwo) }, 500);
+    setTimeout(function() { button.divElement.classList.toggle(button.normalClass) }, 500);
+    setTimeout(function() { button.divElement.classList.toggle(button.litClass) }, 500);
 }
 
 lightSequence();
