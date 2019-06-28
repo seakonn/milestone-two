@@ -34,25 +34,35 @@ function lightSequence() {
     
     switch(Math.floor(Math.random()*4)+1){
         case 1:
-            greenButton.classList.toggle("lit-green-button");
-            greenButton.classList.toggle("green-button");
+            toggleLight(greenButton, "green-button", "lit-green-button");
             break;
         case 2:
-            redButton.classList.toggle("lit-red-button");
-            redButton.classList.toggle("red-button");
+            toggleLight(redButton, "red-button", "lit-red-button");
             break;
         case 3:
-            yellowButton.classList.toggle("lit-yellow-button");
-            yellowButton.classList.toggle("yellow-button");
+            toggleLight(yellowButton, "yellow-button", "lit-yellow-button");
             break;
         case 4:
-            blueButton.classList.toggle("lit-blue-button");
-            blueButton.classList.toggle("blue-button");
+            toggleLight(blueButton, "blue-button", "lit-blue-button");
             break;
         
     }
     
     //store this new light in the sequence
+    
+}
+
+//turns a single light briefly brighter
+//then returns to its original colour
+//assumes that one of the classes supplied is already
+//applied to the element
+function toggleLight(element, classOne, classTwo) {
+    
+    //first turn the light on
+    element.classList.toggle(classOne);
+    element.classList.toggle(classTwo);
+    
+    //now toggle the light off, after a small time delay
     
 }
 
