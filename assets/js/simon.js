@@ -2,10 +2,10 @@
 
 
 //game needs a way of referring to the buttons in the HTML
-const greenButton = document.getElementById("green-button");
-const redButton = document.getElementById("red-button");
-const yellowButton = document.getElementById("yellow-button");
-const blueButton = document.getElementById("blue-button");
+const greenButton = document.getElementsByClassName("green-button")[0];
+const redButton = document.getElementsByClassName("red-button")[0];
+const yellowButton = document.getElementsByClassName("yellow-button")[0];
+const blueButton = document.getElementsByClassName("blue-button")[0];
 
 
 //game state object
@@ -34,16 +34,20 @@ function lightSequence() {
     
     switch(Math.floor(Math.random()*4)+1){
         case 1:
-            greenButton.style.backgroundColor = "#afffab";
+            greenButton.classList.toggle("lit-green-button");
+            greenButton.classList.toggle("green-button");
             break;
         case 2:
-            redButton.style.backgroundColor = "#ff8080";
+            redButton.classList.toggle("lit-red-button");
+            redButton.classList.toggle("red-button");
             break;
         case 3:
-            yellowButton.style.backgroundColor = "#fffd94";
+            yellowButton.classList.toggle("lit-yellow-button");
+            yellowButton.classList.toggle("yellow-button");
             break;
         case 4:
-            blueButton.style.backgroundColor = "#8383f7";
+            blueButton.classList.toggle("lit-blue-button");
+            blueButton.classList.toggle("blue-button");
             break;
         
     }
