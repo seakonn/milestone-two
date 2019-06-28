@@ -32,10 +32,24 @@ function lightSequence() {
     //light a random light
     //pick a random number between 1 and 4
     
+    switch(Math.floor(Math.random()*4)+1){
+        case 1:
+            greenButton.style.backgroundColor = "#afffab";
+            break;
+        case 2:
+            redButton.style.backgroundColor = "#ff8080";
+            break;
+        case 3:
+            yellowButton.style.backgroundColor = "#fffd94";
+            break;
+        case 4:
+            blueButton.style.backgroundColor = "#8383f7";
+            break;
+        
+    }
+    
     //store this new light in the sequence
     
 }
 
-for(var i=0; i<50; i++) {
-console.log(Math.floor(Math.random()*4)+1);
-}
+lightSequence();
