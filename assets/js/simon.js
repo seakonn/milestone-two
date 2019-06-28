@@ -52,10 +52,10 @@ function lightSequence() {
     
 }
 
-//turns a single light briefly brighter
-//then returns to its original colour
-//assumes that one of the classes supplied is already
-//applied to the element
+//turns a single light briefly brighter then returns to its original colour
+//it takes in an object conatining a HTML element, and the two classes
+//which are to be alternately applied to the element
+//it assumes that one of the classes supplied is already applied
 function toggleLight(element, classOne, classTwo) {
     
     //first turn the light on
@@ -63,7 +63,8 @@ function toggleLight(element, classOne, classTwo) {
     element.classList.toggle(classTwo);
     
     //now toggle the light off, after a small time delay
-    
+    setTimeout(function() { element.classList.toggle(classOne) }, 500);
+    setTimeout(function() { element.classList.toggle(classTwo) }, 500);
 }
 
 lightSequence();
