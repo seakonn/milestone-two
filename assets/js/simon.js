@@ -1,11 +1,54 @@
 //modal for rules button
 
 
+//create button objects
+
+const greenButton = {
+    normalClass: "green-button",
+    litClass: "lit-green-button",
+    divElement: document.getElementsByClassName(this.normalClass)[0],
+    refNumber: 0
+    
+};
+
+const redButton = {
+    normalClass: "red-button",
+    litClass: "lit-red-button",
+    divElement: document.getElementsByClassName(this.normalClass)[0],
+    refNumber: 1
+    
+};
+
+const yellowButton = {
+    normalClass: "yellow-button",
+    litClass: "lit-yellow-button",
+    divElement: document.getElementsByClassName(this.normalClass)[0],
+    refNumber: 2
+    
+};
+
+const blueButton = {
+    normalClass: "blue-button",
+    litClass: "lit-blue-button",
+    divElement: document.getElementsByClassName(this.normalClass)[0],
+    refNumber: 3
+    
+};
+
+
 //game needs a way of referring to the buttons in the HTML
+/*
 const greenButton = document.getElementsByClassName("green-button")[0];
 const redButton = document.getElementsByClassName("red-button")[0];
 const yellowButton = document.getElementsByClassName("yellow-button")[0];
 const blueButton = document.getElementsByClassName("blue-button")[0];
+*/
+
+//the order of this array is important as position will correspond to the 
+//random numbers being generated for the lights
+
+const buttons = [greenButton, redButton, yellowButton, blueButton];
+const colours = ["green", "red", "yellow", "blue"];
 
 
 //game state object
@@ -25,25 +68,33 @@ function newGame() {
 
 //when called, 'light up' the sequence of lights created so far
 //for the player to see
+
 function lightSequence() {
     
+    var sequence = [1, 3, 4, 2, 4];
     //light all the lights lit so far
+    //go through sequence array and call toggleLight
+    for(var i=0; i++; i<sequence.length) {
+        toggleLight(buttons[sequence[i]], );
+    }
+    
+    //picks a random number between 1 and 4
+    var randomNumber = Math.floor(Math.random()*4)+1;
+    
     
     //light a random light
-    //pick a random number between 1 and 4
-    
-    switch(Math.floor(Math.random()*4)+1){
+    switch(randomNumber){
         case 1:
-            toggleLight(greenButton, "green-button", "lit-green-button");
+            toggleLight(buttons[0], "green-button", "lit-green-button");
             break;
         case 2:
-            toggleLight(redButton, "red-button", "lit-red-button");
+            toggleLight(buttons[1], "red-button", "lit-red-button");
             break;
         case 3:
-            toggleLight(yellowButton, "yellow-button", "lit-yellow-button");
+            toggleLight(buttons[2], "yellow-button", "lit-yellow-button");
             break;
         case 4:
-            toggleLight(blueButton, "blue-button", "lit-blue-button");
+            toggleLight(buttons[3], "blue-button", "lit-blue-button");
             break;
         
     }
