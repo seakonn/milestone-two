@@ -4,7 +4,7 @@
 //creating button objects to store values associated with them
 //the refNumber uniquely identifies the button for use with any
 //random numbers generated
-//---DELETE REFNUMBER?-----
+
 
 function SimonButton(normalClass, litClass) {
     
@@ -47,62 +47,62 @@ function newGame() {
 function lightSequence() {
     
     
-    /*
-    var sequence1 = [0, 3, 1, 2, 1];
+    
+    var sequence = [0, 3, 1, 2, 1];
     //light all the lights lit so far
     //go through sequence array and call toggleLight
-    for(var i=0; i++; i<sequence1.length) {
-        toggleLight(numberToColour(sequence1[i]));
+    
+    for(var i=0; i<sequence.length; i++) {
+        
+        toggleLight(sequence[i]);
 
     }
-    */
+    
     //picks a random number between 1 and 4
     var randomNumber = Math.floor(Math.random()*4);
     
     
     //light a random light
-    toggleLight(numberToColour(randomNumber));
+    //toggleLight(randomNumber);
     
     //store this new light in the sequence
     
 }
 
-//takes in a number between 0 and 3 and returns the 
-//button object associated with that number
-function numberToColour(num) {
-    
-    switch(num){
-        case 0:
-            return buttons[0];
-            
-        case 1:
-            return buttons[1];
-            
-        case 2:
-            return buttons[2];
-            
-        case 3:
-            return buttons[3];
-            
-    }
-}
-
-
 
 //turns a single light briefly brighter then returns to its original colour
-//it takes in an object conatining a HTML element, and the two classes
-//which are to be alternately applied to the element
+//it takes in a number, which is used to find its corresponding class
 //it assumes that one of the classes supplied is already applied
-function toggleLight(button) {
+function toggleLight(buttonNumber) {
     
+    let currentButton;
+    
+    switch(buttonNumber){
+        case 0:
+            currentButton = buttons[0];
+            break;
+            
+        case 1:
+            currentButton = buttons[1];
+            break;
+            
+        case 2:
+            currentButton = buttons[2];
+            break;
+            
+        case 3:
+            currentButton = buttons[3];
+            break;
+            
+    }
     
     //first turn the light on
-    button.divElement.classList.toggle(button.normalClass);
-    button.divElement.classList.toggle(button.litClass);
+    currentButton.divElement.classList.toggle(currentButton.normalClass);
+    currentButton.divElement.classList.toggle(currentButton.litClass);
     
     //now toggle the light off, after a small time delay
-    setTimeout(function() { button.divElement.classList.toggle(button.normalClass) }, 500);
-    setTimeout(function() { button.divElement.classList.toggle(button.litClass) }, 500);
+    setTimeout(function() { currentButton.divElement.classList.toggle(currentButton.normalClass) }, 500);
+    setTimeout(function() { currentButton.divElement.classList.toggle(currentButton.litClass) }, 500);
 }
 
 lightSequence();
