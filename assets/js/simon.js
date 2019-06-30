@@ -52,11 +52,25 @@ function lightSequence() {
     //light all the lights lit so far
     //go through sequence array and call toggleLight
     
-    for(var i=0; i<sequence.length; i++) {
+    (function lightsLoop(position) {
         
-        toggleLight(sequence[i]);
+        setTimeout(function() {
+            
+            toggleLight(sequence[position]);
+            
+            position--;
+            
+            if(position>0){
+                lightsLoop(position);    
+            }
+            
+            
+        }, 2000);
+    })(sequence.length);
+    
 
-    }
+    
+   
     
     //picks a random number between 1 and 4
     var randomNumber = Math.floor(Math.random()*4);
