@@ -51,12 +51,14 @@ function lightSequence() {
     var sequence = [0, 3, 1, 2, 1];
     //light all the lights lit so far
     //go through sequence array and call toggleLight
+    var sequenceLength = sequence.length;
     
+    ///----NEED TO CALL INITIAL LIGHT WITHOUT DELAY -----
     (function lightsLoop(position) {
         
         setTimeout(function() {
             
-            toggleLight(sequence[position]);
+            toggleLight(sequence[sequenceLength - position]);
             
             position--;
             
@@ -65,8 +67,8 @@ function lightSequence() {
             }
             
             
-        }, 2000);
-    })(sequence.length);
+        }, 1000);
+    })(sequenceLength);
     
 
     
@@ -89,8 +91,10 @@ function lightSequence() {
 //it assumes that one of the classes supplied is already applied
 function toggleLight(buttonNumber) {
     
-    let currentButton;
+    var currentButton;
     
+    //this passes in the number and assigns currentButton
+    //to the button associated with it
     switch(buttonNumber){
         case 0:
             currentButton = buttons[0];
@@ -109,6 +113,7 @@ function toggleLight(buttonNumber) {
             break;
             
     }
+    
     
     //first turn the light on
     currentButton.divElement.classList.toggle(currentButton.normalClass);
