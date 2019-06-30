@@ -6,52 +6,24 @@
 //random numbers generated
 //---DELETE REFNUMBER?-----
 
-const greenButton = {
-    normalClass: "green-button",
-    litClass: "lit-green-button",
-    divElement: document.getElementsByClassName(this.normalClass)[0],
-    refNumber: 0
+function SimonButton(normalClass, litClass) {
     
-};
+    this.normalClass = normalClass;
+    this.litClass = litClass;
+    this.divElement = document.getElementsByClassName(this.normalClass)[0];
+}
 
-const redButton = {
-    normalClass: "red-button",
-    litClass: "lit-red-button",
-    divElement: document.getElementsByClassName(this.normalClass)[0],
-    refNumber: 1
+//an array to store the button objects in
+//the index of each array element corresponds to a number from the random
+//number generator, so each colour can be identified
+const buttons = [
     
-};
+    new SimonButton("green-button", "lit-green-button"),
+    new SimonButton("red-button", "lit-red-button"),
+    new SimonButton("yellow-button", "lit-yellow-button"),
+    new SimonButton("blue-button", "lit-blue-button")
+];
 
-const yellowButton = {
-    normalClass: "yellow-button",
-    litClass: "lit-yellow-button",
-    divElement: document.getElementsByClassName(this.normalClass)[0],
-    refNumber: 2
-    
-};
-
-const blueButton = {
-    normalClass: "blue-button",
-    litClass: "lit-blue-button",
-    divElement: document.getElementsByClassName(this.normalClass)[0],
-    refNumber: 3
-    
-};
-
-
-//game needs a way of referring to the buttons in the HTML
-/*
-const greenButton = document.getElementsByClassName("green-button")[0];
-const redButton = document.getElementsByClassName("red-button")[0];
-const yellowButton = document.getElementsByClassName("yellow-button")[0];
-const blueButton = document.getElementsByClassName("blue-button")[0];
-*/
-
-//the order of this array is important as position will correspond to the 
-//random numbers being generated for the lights
-
-const buttons = [greenButton, redButton, yellowButton, blueButton];
-const colours = ["green", "red", "yellow", "blue"];
 
 
 //game state object
@@ -74,33 +46,22 @@ function newGame() {
 
 function lightSequence() {
     
-    var sequence = [1, 3, 4, 2, 4];
+    
+    /*
+    var sequence1 = [0, 3, 1, 2, 1];
     //light all the lights lit so far
     //go through sequence array and call toggleLight
-    for(var i=0; i++; i<sequence.length) {
-        toggleLight(buttons[sequence[i]], );
+    for(var i=0; i++; i<sequence1.length) {
+        toggleLight(numberToColour(sequence1[i]));
+
     }
-    
+    */
     //picks a random number between 1 and 4
-    var randomNumber = Math.floor(Math.random()*4)+1;
+    var randomNumber = Math.floor(Math.random()*4);
     
     
     //light a random light
-    switch(randomNumber){
-        case 1:
-            toggleLight(buttons[0], "green-button", "lit-green-button");
-            break;
-        case 2:
-            toggleLight(buttons[1], "red-button", "lit-red-button");
-            break;
-        case 3:
-            toggleLight(buttons[2], "yellow-button", "lit-yellow-button");
-            break;
-        case 4:
-            toggleLight(buttons[3], "blue-button", "lit-blue-button");
-            break;
-        
-    }
+    toggleLight(numberToColour(randomNumber));
     
     //store this new light in the sequence
     
@@ -112,16 +73,16 @@ function numberToColour(num) {
     
     switch(num){
         case 0:
-            return greenButton;
+            return buttons[0];
             
         case 1:
-            return redButton;
+            return buttons[1];
             
         case 2:
-            return yellowButton;
+            return buttons[2];
             
         case 3:
-            return blueButton;
+            return buttons[3];
             
     }
 }
@@ -133,6 +94,7 @@ function numberToColour(num) {
 //which are to be alternately applied to the element
 //it assumes that one of the classes supplied is already applied
 function toggleLight(button) {
+    
     
     //first turn the light on
     button.divElement.classList.toggle(button.normalClass);
