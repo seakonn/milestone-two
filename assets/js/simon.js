@@ -43,17 +43,22 @@ function newGame() {
 
 //when called, 'light up' the sequence of lights created so far
 //for the player to see
-
+//ASSUME LIGHTSEQ HAS AT LEAST ONE IN THE SEQUENCE
 function lightSequence() {
     
     
     
-    var sequence = [0, 3, 1, 2, 1];
+    var sequence = [0, 1, 2, 3];
     //light all the lights lit so far
     //go through sequence array and call toggleLight
     var sequenceLength = sequence.length;
     
     ///----NEED TO CALL INITIAL LIGHT WITHOUT DELAY -----
+    //The first light in the sequence is lit without delay
+    
+    toggleLight(sequence[0]);
+    
+    
     (function lightsLoop(position) {
         
         setTimeout(function() {
@@ -68,10 +73,10 @@ function lightSequence() {
             
             
         }, 1000);
-    })(sequenceLength);
+    })(sequenceLength-1);
     
 
-    
+    //RANDOM NUMBER NEEDS TO BE INSIDE LOOP LIGHTS CODE
    
     
     //picks a random number between 1 and 4
@@ -97,19 +102,19 @@ function toggleLight(buttonNumber) {
     //to the button associated with it
     switch(buttonNumber){
         case 0:
-            currentButton = buttons[0];
+            currentButton = buttons[0]; //green button
             break;
             
         case 1:
-            currentButton = buttons[1];
+            currentButton = buttons[1]; //red button
             break;
             
         case 2:
-            currentButton = buttons[2];
+            currentButton = buttons[2]; //yellow button
             break;
             
         case 3:
-            currentButton = buttons[3];
+            currentButton = buttons[3]; //blue button
             break;
             
     }
