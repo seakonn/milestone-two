@@ -42,22 +42,39 @@ function newGame() {
 
 
 //when called, 'light up' the sequence of lights created so far
-//for the player to see
+//for the player to see and a random one at the end
 //ASSUME LIGHTSEQ HAS AT LEAST ONE IN THE SEQUENCE
 function lightSequence() {
 
 
 
-    var sequence = [0, 1, 2, 3];
+    var sequence = [0, 1, 3, 2];
     //light all the lights lit so far
     //go through sequence array and call toggleLight
     var sequenceLength = sequence.length;
+    
+    //picks a random number between 1 and 4
+    var randomNumber = Math.floor(Math.random() * 4);
 
-
+    var firstLight; //will be initilised shortly
+    var isRandomLit = false; //will only change if this is the first iteration
+    
+    //If this is the first round of the game, the first light
+    //will be random
+    if(sequenceLength===0) {
+        firstLight = randomNumber;
+        isRandomLit = true;
+    }
+    
+    //otherwise the first light is the first element
+    //in the array
+    else {
+        firstLight = sequence[0];
+    }
+    
+    
     //The first light in the sequence is lit without delay
-
-    toggleLight(sequence[0]);
-
+    toggleLight(firstLight);
 
     //the rest of the lights light with a delay between them
 
@@ -70,10 +87,8 @@ function lightSequence() {
                 toggleLight(sequence[sequenceLength - position]);
             }
             //when we have lit them all, light a random one
-            else {
-               
-                //picks a random number between 1 and 4
-                var randomNumber = Math.floor(Math.random() * 4);
+            //assuming the random one hasn't already lit
+            else if (!isRandomLit){
 
                 //light a random light
                 toggleLight(randomNumber);
