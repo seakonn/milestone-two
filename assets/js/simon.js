@@ -121,6 +121,8 @@ function lightSequence() {
 //it assumes that one of the classes supplied is already applied
 function toggleLight(buttonNumber) {
 
+    console.log("in togglelight");
+    
     var currentButton;
 
     //this passes in the number and assigns currentButton
@@ -154,4 +156,48 @@ function toggleLight(buttonNumber) {
     setTimeout(function() { currentButton.divElement.classList.toggle(currentButton.litClass) }, 500);
 }
 
-lightSequence();
+
+//gets input from the user via mouse clicks
+function userResponse() {
+    
+    //create some listeners for each of the buttons
+    
+    //event listeners don't play nice with loops :(
+    /*
+    for(var i in buttons) {
+        console.log(i); //buttons[i].divElement
+        document.addEventListener("mouseover", userClicked());
+    }
+    */
+    
+    buttons[0].divElement.addEventListener("click", function(){
+       console.log("CLICK DETECTED"); 
+    });
+    
+    
+    //must wait until the user has responded
+    
+    
+    //delete the listeners when user input is finished
+    
+    
+    
+}
+
+//what happens when the user clicks on a button
+function userClicked() {
+    
+    //show the light briefly
+    console.log("CLICCCCK");
+    toggleLight(0);
+    
+    //check
+}
+
+
+
+//lightSequence();
+
+userResponse();
+
+
