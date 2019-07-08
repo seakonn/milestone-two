@@ -121,8 +121,7 @@ function lightSequence() {
 //it assumes that one of the classes supplied is already applied
 function toggleLight(buttonNumber) {
 
-    console.log("in togglelight");
-
+    
     var currentButton;
 
     //this passes in the number and assigns currentButton
@@ -160,35 +159,30 @@ function toggleLight(buttonNumber) {
 //gets input from the user via mouse clicks
 function userResponse() {
 
-    //create some listeners for each of the buttons
-
-    //event listeners don't play nice with loops :(
-    /*
-    for(var i in buttons) {
-        console.log(i); //buttons[i].divElement
-        document.addEventListener("mouseover", userClicked());
-    }
-    */
-
+    //ADD LISTENER TO GLOBAL SCOPE??- --------
     document.addEventListener("click", function(e) {
         
     
         switch (e.target) {
 
+            //green button was clicked
             case buttons[0].divElement:
-                console.log("green");
+                userClicked("green");
                 break;
 
+            //red button was clicked
             case buttons[1].divElement:
-                console.log("red");
+                userClicked("red");
                 break;
 
+            //yellow button was clicked
             case buttons[2].divElement:
-                console.log("yellow");
+                userClicked("yellow");
                 break;
-
+            
+            //blue button was clicked
             case buttons[3].divElement:
-                console.log("blue");
+                userClicked("blue");
                 break;
 
 
@@ -207,13 +201,11 @@ function userResponse() {
 }
 
 //what happens when the user clicks on a button
-function userClicked() {
+function userClicked(colour) {
 
     //show the light briefly
-    console.log("CLICCCCK");
-    toggleLight(0);
-
-    //check
+    console.log(colour);
+    
 }
 
 
