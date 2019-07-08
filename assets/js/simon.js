@@ -52,27 +52,27 @@ function lightSequence() {
     //light all the lights lit so far
     //go through sequence array and call toggleLight
     var sequenceLength = sequence.length;
-    
+
     //picks a random number between 1 and 4
     var randomNumber = Math.floor(Math.random() * 4);
 
     var firstLight; //will be initilised shortly
     var isRandomLit = false; //will only change if this is the first iteration
-    
+
     //If this is the first round of the game, the first light
     //will be random
-    if(sequenceLength===0) {
+    if (sequenceLength === 0) {
         firstLight = randomNumber;
         isRandomLit = true;
     }
-    
+
     //otherwise the first light is the first element
     //in the array
     else {
         firstLight = sequence[0];
     }
-    
-    
+
+
     //The first light in the sequence is lit without delay
     toggleLight(firstLight);
 
@@ -88,7 +88,7 @@ function lightSequence() {
             }
             //when we have lit them all, light a random one
             //assuming the random one hasn't already lit
-            else if (!isRandomLit){
+            else if (!isRandomLit) {
 
                 //light a random light
                 toggleLight(randomNumber);
@@ -122,7 +122,7 @@ function lightSequence() {
 function toggleLight(buttonNumber) {
 
     console.log("in togglelight");
-    
+
     var currentButton;
 
     //this passes in the number and assigns currentButton
@@ -159,9 +159,9 @@ function toggleLight(buttonNumber) {
 
 //gets input from the user via mouse clicks
 function userResponse() {
-    
+
     //create some listeners for each of the buttons
-    
+
     //event listeners don't play nice with loops :(
     /*
     for(var i in buttons) {
@@ -169,28 +169,50 @@ function userResponse() {
         document.addEventListener("mouseover", userClicked());
     }
     */
+
+    document.addEventListener("click", function(e) {
+        
     
-    buttons[0].divElement.addEventListener("click", function(){
-       console.log("CLICK DETECTED"); 
+        switch (e.target) {
+
+            case buttons[0].divElement:
+                console.log("green");
+                break;
+
+            case buttons[1].divElement:
+                console.log("red");
+                break;
+
+            case buttons[2].divElement:
+                console.log("yellow");
+                break;
+
+            case buttons[3].divElement:
+                console.log("blue");
+                break;
+
+
+        }
+
     });
-    
-    
+
+
     //must wait until the user has responded
-    
-    
+
+
     //delete the listeners when user input is finished
-    
-    
-    
+
+
+
 }
 
 //what happens when the user clicks on a button
 function userClicked() {
-    
+
     //show the light briefly
     console.log("CLICCCCK");
     toggleLight(0);
-    
+
     //check
 }
 
@@ -199,5 +221,3 @@ function userClicked() {
 //lightSequence();
 
 userResponse();
-
-
