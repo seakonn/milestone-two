@@ -119,7 +119,7 @@ function lightSequence() {
 //turns a single light briefly brighter then returns to its original colour
 //it takes in a number, which is used to find its corresponding class
 //it assumes that one of the classes supplied is already applied
-function toggleLight(buttonNumber) {
+function toggleLightOn(buttonNumber) {
 
     
     var currentButton;
@@ -146,13 +146,16 @@ function toggleLight(buttonNumber) {
     }
 
 
-    //first turn the light on
+    //removes the normal class and adds the light class instead
     currentButton.divElement.classList.toggle(currentButton.normalClass);
     currentButton.divElement.classList.toggle(currentButton.litClass);
 
-    //now toggle the light off, after a small time delay
-    setTimeout(function() { currentButton.divElement.classList.toggle(currentButton.normalClass) }, 500);
-    setTimeout(function() { currentButton.divElement.classList.toggle(currentButton.litClass) }, 500);
+}
+
+//called when the mouse is released from a button
+//changes the colour back to it's original state
+function toggleLightOff() {
+    
 }
 
 
@@ -160,29 +163,29 @@ function toggleLight(buttonNumber) {
 function userResponse() {
 
     //ADD LISTENER TO GLOBAL SCOPE??- --------
-    document.addEventListener("click", function(e) {
+    document.addEventListener("mousedown", function(event) {
         
-    
-        switch (e.target) {
+        //checks to see which button (if any) were pressed
+        switch (event.target) {
 
             //green button was clicked
             case buttons[0].divElement:
-                userClicked("green");
+                toggleLightOn(0);
                 break;
 
             //red button was clicked
             case buttons[1].divElement:
-                userClicked("red");
+                toggleLightOn(1);
                 break;
 
             //yellow button was clicked
             case buttons[2].divElement:
-                userClicked("yellow");
+                toggleLightOn(2);
                 break;
             
             //blue button was clicked
             case buttons[3].divElement:
-                userClicked("blue");
+                toggleLightOn(3);
                 break;
 
 
@@ -190,7 +193,39 @@ function userResponse() {
 
     });
 
+    
+    //when the mouse button is released, colour goes back to normal
+    document.addEventListener("mouseup", function(event) {
+        
+        //checks to see which button (if any) were pressed
+        switch (event.target) {
 
+            //green button was clicked
+            case buttons[0].divElement:
+                toggleLightOn(0);
+                break;
+
+            //red button was clicked
+            case buttons[1].divElement:
+                toggleLightOn(1);
+                break;
+
+            //yellow button was clicked
+            case buttons[2].divElement:
+                toggleLightOn(2);
+                break;
+            
+            //blue button was clicked
+            case buttons[3].divElement:
+                toggleLightOn(3);
+                break;
+
+
+        }
+
+    });
+    
+    
     //must wait until the user has responded
 
 
