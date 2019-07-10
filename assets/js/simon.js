@@ -74,7 +74,7 @@ function lightSequence() {
 
 
     //The first light in the sequence is lit without delay
-    blinkLight(firstLight);
+    blinkLight(firstLight, 500);
 
     //the rest of the lights light with a delay between them
 
@@ -84,14 +84,14 @@ function lightSequence() {
 
             //light the lights in sequence ...
             if (position > 0) {
-                blinkLight(sequence[sequenceLength - position]);
+                blinkLight(sequence[sequenceLength - position], 500);
             }
             //when we have lit them all, light a random one
             //assuming the random one hasn't already lit
             else if (!isRandomLit) {
 
                 //light a random light
-                blinkLight(randomNumber);
+                blinkLight(randomNumber, 500);
 
                 //store this new light in the sequence
             }
@@ -121,7 +121,7 @@ function lightSequence() {
 //it assumes that one of the classes supplied is already applied
 function toggleLight(buttonNumber) {
 
-    
+
     var currentButton;
 
     //this passes in the number and assigns currentButton
@@ -157,7 +157,14 @@ function toggleLight(buttonNumber) {
 //takes in the number of the light to blink, as well as the length of 
 //time the light is to stay lit.
 function blinkLight(buttonNum, duration) {
-    
+
+    toggleLight(buttonNum);
+    setTimeout(function() {
+        
+        toggleLight(buttonNum)
+        
+    }, duration);
+
 }
 
 
@@ -166,7 +173,7 @@ function userResponse() {
 
     //ADD LISTENER TO GLOBAL SCOPE??- --------
     document.addEventListener("mousedown", function(event) {
-        
+
         //checks to see which button (if any) were pressed
         switch (event.target) {
 
@@ -175,17 +182,17 @@ function userResponse() {
                 toggleLight(0);
                 break;
 
-            //red button was clicked
+                //red button was clicked
             case buttons[1].divElement:
                 toggleLight(1);
                 break;
 
-            //yellow button was clicked
+                //yellow button was clicked
             case buttons[2].divElement:
                 toggleLight(2);
                 break;
-            
-            //blue button was clicked
+
+                //blue button was clicked
             case buttons[3].divElement:
                 toggleLight(3);
                 break;
@@ -195,10 +202,10 @@ function userResponse() {
 
     });
 
-    
+
     //when the mouse button is released, colour goes back to normal
     document.addEventListener("mouseup", function(event) {
-        
+
         //checks to see which button (if any) were pressed
         switch (event.target) {
 
@@ -207,17 +214,17 @@ function userResponse() {
                 toggleLight(0);
                 break;
 
-            //red button was clicked
+                //red button was clicked
             case buttons[1].divElement:
                 toggleLight(1);
                 break;
 
-            //yellow button was clicked
+                //yellow button was clicked
             case buttons[2].divElement:
                 toggleLight(2);
                 break;
-            
-            //blue button was clicked
+
+                //blue button was clicked
             case buttons[3].divElement:
                 toggleLight(3);
                 break;
@@ -226,8 +233,8 @@ function userResponse() {
         }
 
     });
-    
-    
+
+
     //must wait until the user has responded
 
 
@@ -242,7 +249,7 @@ function userClicked(colour) {
 
     //show the light briefly
     console.log(colour);
-    
+
 }
 
 
