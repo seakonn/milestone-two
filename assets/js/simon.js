@@ -74,7 +74,7 @@ function lightSequence() {
 
 
     //The first light in the sequence is lit without delay
-    toggleLight(firstLight);
+    blinkLight(firstLight);
 
     //the rest of the lights light with a delay between them
 
@@ -84,14 +84,14 @@ function lightSequence() {
 
             //light the lights in sequence ...
             if (position > 0) {
-                toggleLight(sequence[sequenceLength - position]);
+                blinkLight(sequence[sequenceLength - position]);
             }
             //when we have lit them all, light a random one
             //assuming the random one hasn't already lit
             else if (!isRandomLit) {
 
                 //light a random light
-                toggleLight(randomNumber);
+                blinkLight(randomNumber);
 
                 //store this new light in the sequence
             }
@@ -116,10 +116,10 @@ function lightSequence() {
 }
 
 
-//turns a single light briefly brighter then returns to its original colour
+//turns a light from its normal state to its lit state, or vice versa
 //it takes in a number, which is used to find its corresponding class
 //it assumes that one of the classes supplied is already applied
-function toggleLightOn(buttonNumber) {
+function toggleLight(buttonNumber) {
 
     
     var currentButton;
@@ -152,9 +152,11 @@ function toggleLightOn(buttonNumber) {
 
 }
 
-//called when the mouse is released from a button
-//changes the colour back to it's original state
-function toggleLightOff() {
+
+//turns a light on then off again, 
+//takes in the number of the light to blink, as well as the length of 
+//time the light is to stay lit.
+function blinkLight(buttonNum, duration) {
     
 }
 
@@ -170,22 +172,22 @@ function userResponse() {
 
             //green button was clicked
             case buttons[0].divElement:
-                toggleLightOn(0);
+                toggleLight(0);
                 break;
 
             //red button was clicked
             case buttons[1].divElement:
-                toggleLightOn(1);
+                toggleLight(1);
                 break;
 
             //yellow button was clicked
             case buttons[2].divElement:
-                toggleLightOn(2);
+                toggleLight(2);
                 break;
             
             //blue button was clicked
             case buttons[3].divElement:
-                toggleLightOn(3);
+                toggleLight(3);
                 break;
 
 
@@ -202,22 +204,22 @@ function userResponse() {
 
             //green button was clicked
             case buttons[0].divElement:
-                toggleLightOn(0);
+                toggleLight(0);
                 break;
 
             //red button was clicked
             case buttons[1].divElement:
-                toggleLightOn(1);
+                toggleLight(1);
                 break;
 
             //yellow button was clicked
             case buttons[2].divElement:
-                toggleLightOn(2);
+                toggleLight(2);
                 break;
             
             //blue button was clicked
             case buttons[3].divElement:
-                toggleLightOn(3);
+                toggleLight(3);
                 break;
 
 
@@ -245,6 +247,6 @@ function userClicked(colour) {
 
 
 
-//lightSequence();
+lightSequence();
 
-userResponse();
+//userResponse();
