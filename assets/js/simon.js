@@ -1,3 +1,8 @@
+document.getElementById("new-game-button").addEventListener("click", function() {
+    
+   console.log("BUTTON :)"); 
+});
+
 //creating button objects to store values associated with them
 //the refNumber uniquely identifies the button for use with any
 //random numbers generated
@@ -34,7 +39,7 @@ function GameState() {
 
 //functionality for when new game is pressed
 function newGame() {
-    var currentGame = new GameState();
+    var game = new GameState();
 }
 
 
