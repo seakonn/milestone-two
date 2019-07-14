@@ -1,6 +1,3 @@
-//modal for rules button
-
-
 //creating button objects to store values associated with them
 //the refNumber uniquely identifies the button for use with any
 //random numbers generated
@@ -171,7 +168,14 @@ function blinkLight(buttonNum, duration) {
 //gets input from the user via mouse clicks
 function userResponse() {
 
-    //ADD LISTENER TO GLOBAL SCOPE??- --------
+    //test variable, the sequence of colours so far
+    var answerSequence = [0, 0, 3, 1];
+    var numOfAnswers = answerSequence.length;
+    var numOfClicks = 0;
+    var currentClick;
+    
+    
+    //when the mouse button is depressed, the colour changes to lit state
     document.addEventListener("mousedown", function(event) {
 
         //checks to see which button (if any) were pressed
@@ -204,6 +208,7 @@ function userResponse() {
 
 
     //when the mouse button is released, colour goes back to normal
+    //checks to see if the user clicked the right button in the sequence
     document.addEventListener("mouseup", function(event) {
 
         //checks to see which button (if any) were pressed
@@ -212,30 +217,47 @@ function userResponse() {
             //green button was clicked
             case buttons[0].divElement:
                 toggleLight(0);
+                currentClick = 0;
                 break;
 
                 //red button was clicked
             case buttons[1].divElement:
                 toggleLight(1);
+                currentClick = 1;
                 break;
 
                 //yellow button was clicked
             case buttons[2].divElement:
                 toggleLight(2);
+                currentClick = 2;
                 break;
 
                 //blue button was clicked
             case buttons[3].divElement:
                 toggleLight(3);
+                currentClick = 3;
                 break;
 
 
         }
+        
+        //in addition to changing the colour back, we want to see
+        //if the user clicked the correct button
+        //also if all correct, we want to exit out of here and
+        //proceed to the next round
+        numOfClicks++;
+        
+        //if the button just clicked is not the next one in the sequence
+        //then the game is over
+        if(answerSequence[numOfClicks-1]!== currentClick) {
+            console.log(event);
+        }
+        
 
     });
 
 
-    //must wait until the user has responded
+    
 
 
     //delete the listeners when user input is finished
@@ -244,16 +266,14 @@ function userResponse() {
 
 }
 
-//what happens when the user clicks on a button
-function userClicked(colour) {
-
-    //show the light briefly
-    console.log(colour);
-
+//checks the users input so far against the stored
+//answer. Returns true if correct, false if incorrect.
+function checkAnswer() {
+    
 }
 
 
 
-lightSequence();
+//lightSequence();
 
-//userResponse();
+userResponse();
