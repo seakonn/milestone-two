@@ -51,6 +51,9 @@ function newGame() {
     
     
     lightSequence(game.sequence);
+    
+    userResponse(game.sequence, game);
+    
     //continue the game indefinitely until the player loses
     
     
@@ -193,11 +196,11 @@ function blinkLight(buttonNum, duration) {
 
 
 //gets input from the user via mouse clicks
-function userResponse() {
+function userResponse(seq, gameobj) {
 
     //test variable, the sequence of colours so far
-    var answerSequence = [0, 0, 3, 1];
-    var numOfAnswers = answerSequence.length;
+    
+    
     var numOfClicks = 0;
     var currentClick;
 
@@ -245,28 +248,28 @@ function userResponse() {
             case buttons[0].divElement:
                 toggleLight(0);
                 numOfClicks++;
-                checkAnswer(answerSequence, numOfClicks, 0);
+                gameobj.gameLost = checkAnswer(seq, numOfClicks, 0);
                 break;
 
                 //red button was clicked
             case buttons[1].divElement:
                 toggleLight(1);
                 numOfClicks++;
-                checkAnswer(answerSequence, numOfClicks, 1);
+                gameobj.gameLost = checkAnswer(seq, numOfClicks, 1);
                 break;
 
                 //yellow button was clicked
             case buttons[2].divElement:
                 toggleLight(2);
                 numOfClicks++;
-                checkAnswer(answerSequence, numOfClicks, 2);
+                gameobj.gameLost = checkAnswer(seq, numOfClicks, 2);
                 break;
 
                 //blue button was clicked
             case buttons[3].divElement:
                 toggleLight(3);
                 numOfClicks++;
-                checkAnswer(answerSequence, numOfClicks, 3);
+                gameobj.gameLost = checkAnswer(seq, numOfClicks, 3);
                 break;
 
 
@@ -302,6 +305,7 @@ function checkAnswer(answers, clicks, button) {
     //then the game is over
     if (answers[clicks - 1] !== button) {
         console.log("WRONG");
+        return true;
     }
     
     else
@@ -311,6 +315,7 @@ function checkAnswer(answers, clicks, button) {
         //start new round
         if (clicks === answers.length) {
             console.log("ALL ANSWERS CORRECT");
+            return false;
         }
 
 
