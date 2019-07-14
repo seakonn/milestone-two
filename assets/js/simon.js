@@ -1,6 +1,8 @@
+//want know when new game button is pressed
+
 document.getElementById("new-game-button").addEventListener("click", function() {
     
-   console.log("BUTTON :)"); 
+   newGame(); 
 });
 
 //creating button objects to store values associated with them
@@ -34,26 +36,45 @@ const buttons = [
 function GameState() {
 
     //stores the lights lit so far by the game
-    var sequence = [];
+    this.sequence = [];
+    
+    //game is not lost until the player makes a mistake
+    this.gameLost = false;
+    
 }
 
 //functionality for when new game is pressed
 function newGame() {
+    
     var game = new GameState();
+    
+    
+    
+    lightSequence(game.sequence);
+    //continue the game indefinitely until the player loses
+    
+    
+    /*
+    while(!game.gameLost) {
+        
+        
+    }
+    */
+    
 }
 
 
 //when called, 'light up' the sequence of lights created so far
 //for the player to see and a random one at the end
-//ASSUME LIGHTSEQ HAS AT LEAST ONE IN THE SEQUENCE
-function lightSequence() {
+//passes in the current sequence of lights
+function lightSequence(seq) {
 
 
 
-    var sequence = [0, 1, 3, 2];
+    
     //light all the lights lit so far
     //go through sequence array and call toggleLight
-    var sequenceLength = sequence.length;
+    var sequenceLength = seq.length;
 
     //picks a random number between 1 and 4
     var randomNumber = Math.floor(Math.random() * 4);
@@ -71,7 +92,7 @@ function lightSequence() {
     //otherwise the first light is the first element
     //in the array
     else {
-        firstLight = sequence[0];
+        firstLight = seq[0];
     }
 
 
@@ -86,7 +107,7 @@ function lightSequence() {
 
             //light the lights in sequence ...
             if (position > 0) {
-                blinkLight(sequence[sequenceLength - position], 500);
+                blinkLight(seq[sequenceLength - position], 500);
             }
             //when we have lit them all, light a random one
             //assuming the random one hasn't already lit
@@ -108,12 +129,13 @@ function lightSequence() {
 
         }, 1000);
     })(sequenceLength - 1);
+    
+    
+    //add the random light to the current sequence of lights
+    seq.push(randomNumber);
 
 
-    //RANDOM NUMBER NEEDS TO BE INSIDE LOOP LIGHTS CODE
-
-
-
+    
 
 }
 
@@ -302,4 +324,4 @@ function checkAnswer(answers, clicks, button) {
 
 //lightSequence();
 
-userResponse();
+//userResponse();
