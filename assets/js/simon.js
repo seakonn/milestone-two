@@ -157,9 +157,9 @@ function blinkLight(buttonNum, duration) {
 
     toggleLight(buttonNum);
     setTimeout(function() {
-        
+
         toggleLight(buttonNum)
-        
+
     }, duration);
 
 }
@@ -173,8 +173,8 @@ function userResponse() {
     var numOfAnswers = answerSequence.length;
     var numOfClicks = 0;
     var currentClick;
-    
-    
+
+
     //when the mouse button is depressed, the colour changes to lit state
     document.addEventListener("mousedown", function(event) {
 
@@ -217,47 +217,47 @@ function userResponse() {
             //green button was clicked
             case buttons[0].divElement:
                 toggleLight(0);
-                currentClick = 0;
+                numOfClicks++;
+                checkAnswer(answerSequence, numOfClicks, 0);
                 break;
 
                 //red button was clicked
             case buttons[1].divElement:
                 toggleLight(1);
-                currentClick = 1;
+                numOfClicks++;
+                checkAnswer(answerSequence, numOfClicks, 1);
                 break;
 
                 //yellow button was clicked
             case buttons[2].divElement:
                 toggleLight(2);
-                currentClick = 2;
+                numOfClicks++;
+                checkAnswer(answerSequence, numOfClicks, 2);
                 break;
 
                 //blue button was clicked
             case buttons[3].divElement:
                 toggleLight(3);
-                currentClick = 3;
+                numOfClicks++;
+                checkAnswer(answerSequence, numOfClicks, 3);
                 break;
 
 
         }
-        
+
         //in addition to changing the colour back, we want to see
         //if the user clicked the correct button
         //also if all correct, we want to exit out of here and
         //proceed to the next round
-        numOfClicks++;
-        
-        //if the button just clicked is not the next one in the sequence
-        //then the game is over
-        if(answerSequence[numOfClicks-1]!== currentClick) {
-            console.log(event);
-        }
-        
+
+
+
+
 
     });
 
 
-    
+
 
 
     //delete the listeners when user input is finished
@@ -268,8 +268,29 @@ function userResponse() {
 
 //checks the users input so far against the stored
 //answer. Returns true if correct, false if incorrect.
-function checkAnswer() {
+function checkAnswer(answers, clicks, button) {
+
+
+    //if the button just clicked is not the next one in the sequence
+    //then the game is over
+    if (answers[clicks - 1] !== button) {
+        console.log("WRONG");
+    }
     
+    else
+
+        //if we have the same number of clicks as answers
+        //all answers must have been correct
+        //start new round
+        if (clicks === answers.length) {
+            console.log("ALL ANSWERS CORRECT");
+        }
+
+
+
+
+
+
 }
 
 
