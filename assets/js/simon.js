@@ -1,8 +1,8 @@
 //want know when new game button is pressed
 
 document.getElementById("new-game-button").addEventListener("click", function() {
-    
-   newGame(); 
+
+    newGame();
 });
 
 //creating button objects to store values associated with them
@@ -37,33 +37,33 @@ function GameState() {
 
     //stores the lights lit so far by the game
     this.sequence = [];
-    
+
     //game is not lost until the player makes a mistake
     this.gameLost = false;
-    
+
 }
 
 //functionality for when new game is pressed
 function newGame() {
-    
+
     var game = new GameState();
-    
-    
-    
+
+
+
     lightSequence(game.sequence);
-    
+
     userResponse(game.sequence, game);
-    
+
     //continue the game indefinitely until the player loses
-    
-    
+
+
     /*
     while(!game.gameLost) {
         
         
     }
     */
-    
+
 }
 
 
@@ -74,7 +74,7 @@ function lightSequence(seq) {
 
 
 
-    
+
     //light all the lights lit so far
     //go through sequence array and call toggleLight
     var sequenceLength = seq.length;
@@ -132,13 +132,13 @@ function lightSequence(seq) {
 
         }, 1000);
     })(sequenceLength - 1);
-    
-    
+
+
     //add the random light to the current sequence of lights
     seq.push(randomNumber);
 
 
-    
+
 
 }
 
@@ -199,134 +199,153 @@ function blinkLight(buttonNum, duration) {
 function userResponse(seq, gameobj) {
 
     //test variable, the sequence of colours so far
-    
-    
+
+
     var numOfClicks = 0;
     var currentClick;
 
 
     //when the mouse button is depressed, the colour changes to lit state
-    document.addEventListener("mousedown", function(event) {
-
-        //checks to see which button (if any) were pressed
-        switch (event.target) {
-
-            //green button was clicked
-            case buttons[0].divElement:
-                toggleLight(0);
-                break;
-
-                //red button was clicked
-            case buttons[1].divElement:
-                toggleLight(1);
-                break;
-
-                //yellow button was clicked
-            case buttons[2].divElement:
-                toggleLight(2);
-                break;
-
-                //blue button was clicked
-            case buttons[3].divElement:
-                toggleLight(3);
-                break;
+    document.addEventListener("mousedown", buttonPressDown);
 
 
-        }
-
-    });
-
-
-    //when the mouse button is released, colour goes back to normal
-    //checks to see if the user clicked the right button in the sequence
-    document.addEventListener("mouseup", function(event) {
-
-        //checks to see which button (if any) were pressed
-        switch (event.target) {
-
-            //green button was clicked
-            case buttons[0].divElement:
-                toggleLight(0);
-                numOfClicks++;
-                gameobj.gameLost = checkAnswer(seq, numOfClicks, 0);
-                break;
-
-                //red button was clicked
-            case buttons[1].divElement:
-                toggleLight(1);
-                numOfClicks++;
-                gameobj.gameLost = checkAnswer(seq, numOfClicks, 1);
-                break;
-
-                //yellow button was clicked
-            case buttons[2].divElement:
-                toggleLight(2);
-                numOfClicks++;
-                gameobj.gameLost = checkAnswer(seq, numOfClicks, 2);
-                break;
-
-                //blue button was clicked
-            case buttons[3].divElement:
-                toggleLight(3);
-                numOfClicks++;
-                gameobj.gameLost = checkAnswer(seq, numOfClicks, 3);
-                break;
-
-
-        }
-
-        //in addition to changing the colour back, we want to see
-        //if the user clicked the correct button
-        //also if all correct, we want to exit out of here and
-        //proceed to the next round
+        //when the mouse button is released, colour goes back to normal
+        //checks to see if the user clicked the right button in the sequence
+        document.addEventListener("mouseup", buttonPressUp);
 
 
 
 
 
-    });
-
-
-
-
-
-    //delete the listeners when user input is finished
+        //delete the listeners when user input is finished
 
 
 
 }
 
-//checks the users input so far against the stored
-//answer. Returns true if correct, false if incorrect.
-function checkAnswer(answers, clicks, button) {
+
+function buttonPressDown(event) {
 
 
-    //if the button just clicked is not the next one in the sequence
-    //then the game is over
-    if (answers[clicks - 1] !== button) {
-        console.log("WRONG");
-        return true;
-    }
+
+        //checks to see which button (if any) were pressed
+        switch (event.target) {
+
+            //green button was clicked
+            case buttons[0].divElement:
+                toggleLight(0);
+                break;
+
+                //red button was clicked
+            case buttons[1].divElement:
+                toggleLight(1);
+                break;
+
+                //yellow button was clicked
+            case buttons[2].divElement:
+                toggleLight(2);
+                break;
+
+                //blue button was clicked
+            case buttons[3].divElement:
+                toggleLight(3);
+                break;
+
+
+        }
+
+
+
+
+}
+
+
+var numOfClicks = 0;
+
+function buttonPressUp(event) {
     
-    else
+    
 
-        //if we have the same number of clicks as answers
-        //all answers must have been correct
-        //start new round
-        if (clicks === answers.length) {
-            console.log("ALL ANSWERS CORRECT");
-            return false;
-        }
+            //checks to see which button (if any) were pressed
+            switch (event.target) {
+
+                //green button was clicked
+                case buttons[0].divElement:
+                    toggleLight(0);
+                    numOfClicks++;
+                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 0);
+                    break;
+
+                    //red button was clicked
+                case buttons[1].divElement:
+                    toggleLight(1);
+                    numOfClicks++;
+                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 1);
+                    break;
+
+                    //yellow button was clicked
+                case buttons[2].divElement:
+                    toggleLight(2);
+                    numOfClicks++;
+                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 2);
+                    break;
+
+                    //blue button was clicked
+                case buttons[3].divElement:
+                    toggleLight(3);
+                    numOfClicks++;
+                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 3);
+                    break;
+
+
+            }
+
+            //in addition to changing the colour back, we want to see
+            //if the user clicked the correct button
+            //also if all correct, we want to exit out of here and
+            //proceed to the next round
 
 
 
 
 
-
+        
+    
+    
 }
 
 
+    //checks the users input so far against the stored
+    //answer. Returns true if the answer was wrong, false if right.
+    function checkAnswer(answers, clicks, button) {
 
-//lightSequence();
 
-//userResponse();
+        //if the button just clicked is not the next one in the sequence
+        //then the game is over
+        if (answers[clicks - 1] !== button) {
+            console.log("WRONG");
+            return true;
+        }
+
+        else
+
+            //if we have the same number of clicks as answers
+            //all answers must have been correct
+            //start new round
+            if (clicks === answers.length) {
+                console.log("ALL ANSWERS CORRECT");
+                return false;
+            }
+
+
+
+
+
+
+    }
+
+
+
+    //lightSequence();
+
+    //userResponse();
