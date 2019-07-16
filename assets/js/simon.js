@@ -1,8 +1,8 @@
 //want know when new game button is pressed
 
 document.getElementById("new-game-button").addEventListener("click", function() {
-    
-   newGame(); 
+
+    newGame();
 });
 
 //creating button objects to store values associated with them
@@ -28,7 +28,7 @@ const buttons = [
     new SimonButton("blue-button", "lit-blue-button")
 ];
 
-
+var allowUserInput = false;
 
 //game state object
 //holds current sequence in a value
@@ -37,33 +37,34 @@ function GameState() {
 
     //stores the lights lit so far by the game
     this.sequence = [];
-    
+
     //game is not lost until the player makes a mistake
     this.gameLost = false;
-    
+
+
 }
 
 //functionality for when new game is pressed
 function newGame() {
-    
+
     var game = new GameState();
-    
-    
-    
+
+
+
     lightSequence(game.sequence);
-    
+
     userResponse(game.sequence, game);
-    
+
     //continue the game indefinitely until the player loses
-    
-    
+
+
     /*
     while(!game.gameLost) {
         
         
     }
     */
-    
+
 }
 
 
@@ -74,7 +75,7 @@ function lightSequence(seq) {
 
 
 
-    
+
     //light all the lights lit so far
     //go through sequence array and call toggleLight
     var sequenceLength = seq.length;
@@ -132,13 +133,13 @@ function lightSequence(seq) {
 
         }, 1000);
     })(sequenceLength - 1);
-    
-    
+
+
     //add the random light to the current sequence of lights
     seq.push(randomNumber);
 
 
-    
+
 
 }
 
@@ -199,39 +200,44 @@ function blinkLight(buttonNum, duration) {
 function userResponse(seq, gameobj) {
 
     //test variable, the sequence of colours so far
-    
-    
+
+
     var numOfClicks = 0;
     var currentClick;
+    allowUserInput = true;
 
 
     //when the mouse button is depressed, the colour changes to lit state
     document.addEventListener("mousedown", function(event) {
 
-        //checks to see which button (if any) were pressed
-        switch (event.target) {
+        //only register button clicks if the user is allowed to respond
+        if (allowUserInput === true) {
 
-            //green button was clicked
-            case buttons[0].divElement:
-                toggleLight(0);
-                break;
+            //checks to see which button (if any) were pressed
+            switch (event.target) {
 
-                //red button was clicked
-            case buttons[1].divElement:
-                toggleLight(1);
-                break;
+                //green button was clicked
+                case buttons[0].divElement:
+                    toggleLight(0);
+                    break;
 
-                //yellow button was clicked
-            case buttons[2].divElement:
-                toggleLight(2);
-                break;
+                    //red button was clicked
+                case buttons[1].divElement:
+                    toggleLight(1);
+                    break;
 
-                //blue button was clicked
-            case buttons[3].divElement:
-                toggleLight(3);
-                break;
+                    //yellow button was clicked
+                case buttons[2].divElement:
+                    toggleLight(2);
+                    break;
+
+                    //blue button was clicked
+                case buttons[3].divElement:
+                    toggleLight(3);
+                    break;
 
 
+            }
         }
 
     });
@@ -241,37 +247,41 @@ function userResponse(seq, gameobj) {
     //checks to see if the user clicked the right button in the sequence
     document.addEventListener("mouseup", function(event) {
 
-        //checks to see which button (if any) were pressed
-        switch (event.target) {
+        if (allowUserInput === true) {
 
-            //green button was clicked
-            case buttons[0].divElement:
-                toggleLight(0);
-                numOfClicks++;
-                gameobj.gameLost = checkAnswer(seq, numOfClicks, 0);
-                break;
+            //checks to see which button (if any) were pressed
+            switch (event.target) {
 
-                //red button was clicked
-            case buttons[1].divElement:
-                toggleLight(1);
-                numOfClicks++;
-                gameobj.gameLost = checkAnswer(seq, numOfClicks, 1);
-                break;
+                //green button was clicked
+                case buttons[0].divElement:
+                    toggleLight(0);
+                    numOfClicks++;
+                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 0);
+                    break;
 
-                //yellow button was clicked
-            case buttons[2].divElement:
-                toggleLight(2);
-                numOfClicks++;
-                gameobj.gameLost = checkAnswer(seq, numOfClicks, 2);
-                break;
+                    //red button was clicked
+                case buttons[1].divElement:
+                    toggleLight(1);
+                    numOfClicks++;
+                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 1);
+                    break;
 
-                //blue button was clicked
-            case buttons[3].divElement:
-                toggleLight(3);
-                numOfClicks++;
-                gameobj.gameLost = checkAnswer(seq, numOfClicks, 3);
-                break;
+                    //yellow button was clicked
+                case buttons[2].divElement:
+                    toggleLight(2);
+                    numOfClicks++;
+                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 2);
+                    break;
 
+                    //blue button was clicked
+                case buttons[3].divElement:
+                    toggleLight(3);
+                    numOfClicks++;
+                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 3);
+                    break;
+
+
+            }
 
         }
 
@@ -305,9 +315,10 @@ function checkAnswer(answers, clicks, button) {
     //then the game is over
     if (answers[clicks - 1] !== button) {
         console.log("WRONG");
+        allowUserInput = false;
         return true;
     }
-    
+
     else
 
         //if we have the same number of clicks as answers
@@ -315,6 +326,7 @@ function checkAnswer(answers, clicks, button) {
         //start new round
         if (clicks === answers.length) {
             console.log("ALL ANSWERS CORRECT");
+            allowUserInput = false;
             return false;
         }
 
