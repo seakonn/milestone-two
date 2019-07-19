@@ -51,10 +51,14 @@ function newGame() {
 
 
 
-    lightSequence(game.sequence);
-
-    userResponse(game.sequence, game);
-
+    lightSequence(game.sequence, userResponse, game);
+    console.log(game.sequence);
+    
+    /*
+    lightSequence(game.sequence, userResponse, game);
+    console.log(game.sequence)
+    */
+    
     //continue the game indefinitely until the player loses
 
 
@@ -71,7 +75,7 @@ function newGame() {
 //when called, 'light up' the sequence of lights created so far
 //for the player to see and a random one at the end
 //passes in the current sequence of lights
-function lightSequence(seq) {
+function lightSequence(seq, response, gam) {
 
 
 
@@ -139,7 +143,7 @@ function lightSequence(seq) {
     seq.push(randomNumber);
 
 
-
+    response(seq, gam);
 
 }
 
@@ -197,6 +201,7 @@ function blinkLight(buttonNum, duration) {
 
 
 //gets input from the user via mouse clicks
+//buttons are activated when this function is called
 function userResponse(seq, gameobj) {
 
     //test variable, the sequence of colours so far
