@@ -28,7 +28,6 @@ const buttons = [
     new SimonButton("blue-button", "lit-blue-button")
 ];
 
-var allowUserInput = false;
 
 //game state object
 //holds current sequence in a value
@@ -53,12 +52,12 @@ function newGame() {
 
     lightSequence(game.sequence, userResponse, game);
     console.log(game.sequence);
-    
+
     /*
     lightSequence(game.sequence, userResponse, game);
     console.log(game.sequence)
     */
-    
+
     //continue the game indefinitely until the player loses
 
 
@@ -199,47 +198,36 @@ function blinkLight(buttonNum, duration) {
 
 //gets input from the user via mouse clicks
 //buttons are activated when this function is called
-function userResponse(seq, gameobj) {
+function userResponse(currentgame) {
 
-    //test variable, the sequence of colours so far
-
-
-    var numOfClicks = 0;
-    var currentClick;
-    allowUserInput = true;
-
+    var numOfAnswers = 0;
 
     //when the mouse button is depressed, the colour changes to lit state
     document.addEventListener("mousedown", function(event) {
 
-        //only register button clicks if the user is allowed to respond
-        if (allowUserInput === true) {
+        //checks to see which button (if any) were pressed
+        switch (event.target) {
 
-            //checks to see which button (if any) were pressed
-            switch (event.target) {
+            //green button was clicked
+            case buttons[0].divElement:
+                toggleLight(0);
+                break;
 
-                //green button was clicked
-                case buttons[0].divElement:
-                    toggleLight(0);
-                    break;
+                //red button was clicked
+            case buttons[1].divElement:
+                toggleLight(1);
+                break;
 
-                    //red button was clicked
-                case buttons[1].divElement:
-                    toggleLight(1);
-                    break;
+                //yellow button was clicked
+            case buttons[2].divElement:
+                toggleLight(2);
+                break;
 
-                    //yellow button was clicked
-                case buttons[2].divElement:
-                    toggleLight(2);
-                    break;
+                //blue button was clicked
+            case buttons[3].divElement:
+                toggleLight(3);
+                break;
 
-                    //blue button was clicked
-                case buttons[3].divElement:
-                    toggleLight(3);
-                    break;
-
-
-            }
         }
 
     });
@@ -249,43 +237,41 @@ function userResponse(seq, gameobj) {
     //checks to see if the user clicked the right button in the sequence
     document.addEventListener("mouseup", function(event) {
 
-        if (allowUserInput === true) {
+        //checks to see which button (if any) were pressed
+        switch (event.target) {
 
-            //checks to see which button (if any) were pressed
-            switch (event.target) {
+            //green button was clicked
+            case buttons[0].divElement:
+                toggleLight(0);
+                numOfAnswers++;
+                currentgame.gameLost = checkAnswer(seq, numOfAnswers, 0);
+                break;
 
-                //green button was clicked
-                case buttons[0].divElement:
-                    toggleLight(0);
-                    numOfClicks++;
-                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 0);
-                    break;
+                //red button was clicked
+            case buttons[1].divElement:
+                toggleLight(1);
+                numOfAnswers++;
+                gameobj.gameLost = checkAnswer(seq, numOfAnswers, 1);
+                break;
 
-                    //red button was clicked
-                case buttons[1].divElement:
-                    toggleLight(1);
-                    numOfClicks++;
-                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 1);
-                    break;
+                //yellow button was clicked
+            case buttons[2].divElement:
+                toggleLight(2);
+                numOfAnswers++;
+                gameobj.gameLost = checkAnswer(seq, numOfAnswers, 2);
+                break;
 
-                    //yellow button was clicked
-                case buttons[2].divElement:
-                    toggleLight(2);
-                    numOfClicks++;
-                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 2);
-                    break;
+                //blue button was clicked
+            case buttons[3].divElement:
+                toggleLight(3);
+                numOfAnswers++;
+                gameobj.gameLost = checkAnswer(seq, numOfAnswers, 3);
+                break;
 
-                    //blue button was clicked
-                case buttons[3].divElement:
-                    toggleLight(3);
-                    numOfClicks++;
-                    gameobj.gameLost = checkAnswer(seq, numOfClicks, 3);
-                    break;
-
-
-            }
 
         }
+
+
 
         //in addition to changing the colour back, we want to see
         //if the user clicked the correct button
@@ -343,43 +329,42 @@ function checkAnswer(answers, clicks, button) {
 //this function starts a new round of lights, and player response to those lights
 //it will keep calling itself until the player gets an answer wrong
 async function newRound(currentgame) {
-    
-    
+
+
     //promise ensures that the buttons will not be activated until the lights
     //have finished displaying
     var lightsFinished = new Promise(function(resolve, reject) {
-        
+
         //display the sequence of lights so far
         lightSequence(currentgame);
-        
+
         //need to know when the lights have finished displaying
         //sequence finished after (X*1000) - 500 milliseconds where X is sequence length
         //when finished, promise is resolved
-        setTimeout(function () {
-            
+        setTimeout(function() {
+
             resolve();
-            
-        }, ((currentgame.sequence.length)*1000)-500);
-        
+
+        }, ((currentgame.sequence.length) * 1000) - 500);
+
     });
-    
+
     //wait until the light have finished
     await lightsFinished;
-    
+
     //allow the user to respond
-    
+
     //wait for response to finish
-    
+
     //if response correct, function calls itself again
-    
+    //RESPONSE CORRECT WHEN ??? ROUNDWON = TRUE
+
     //if response incorrect, exit out of function, end game
-    
-    
+    //RESPONSE INCORRECT WHEN GAMELOST= TRUE
+
+
 }
 
 //lightSequence();
 
 //userResponse();
-
-
-
