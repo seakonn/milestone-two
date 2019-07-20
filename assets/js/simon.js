@@ -75,14 +75,14 @@ function newGame() {
 //when called, 'light up' the sequence of lights created so far
 //for the player to see and a random one at the end
 //passes in the current sequence of lights
-function lightSequence(seq, response, gam) {
+function lightSequence(currentgame) {
 
 
 
 
     //light all the lights lit so far
     //go through sequence array and call toggleLight
-    var sequenceLength = seq.length;
+    var sequenceLength = currentgame.sequence.length;
 
     //picks a random number between 1 and 4
     var randomNumber = Math.floor(Math.random() * 4);
@@ -100,7 +100,7 @@ function lightSequence(seq, response, gam) {
     //otherwise the first light is the first element
     //in the array
     else {
-        firstLight = seq[0];
+        firstLight = currentgame.sequence[0];
     }
 
 
@@ -115,7 +115,7 @@ function lightSequence(seq, response, gam) {
 
             //light the lights in sequence ...
             if (position > 0) {
-                blinkLight(seq[sequenceLength - position], 500);
+                blinkLight(currentgame.sequence[sequenceLength - position], 500);
             }
             //when we have lit them all, light a random one
             //assuming the random one hasn't already lit
@@ -140,10 +140,7 @@ function lightSequence(seq, response, gam) {
 
 
     //add the random light to the current sequence of lights
-    seq.push(randomNumber);
-
-
-    response(seq, gam);
+    currentgame.sequence.push(randomNumber);
 
 }
 
@@ -343,12 +340,25 @@ function checkAnswer(answers, clicks, button) {
 }
 
 
-//this function starts a new round of lights
+//this function starts a new round of lights, and player response to those lights
 //it will keep calling itself until the player gets an answer wrong
-async function newRound() {
+async function newRound(currentgame) {
     
     //start a sequence of lights
     
+    var lightsFinished = new Promise(function(resolve, reject) {
+        
+        lightSequence(testseq, game);
+        
+        //sequence finished after (X*1000 - 500 milliseconds where X is sequence length
+        setTimeout(function () {
+            resolve();
+        }, ((testseq.length)*1000)-500);
+        //if finished lighting lights then call user input
+            
+        
+            
+    });
     //wait until the light have finished
     
     //allow the user to respond
