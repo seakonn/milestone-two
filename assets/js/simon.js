@@ -353,18 +353,41 @@ async function newRound(currentgame) {
     await lightsFinished;
 
     //allow the user to respond
+    var roundComplete = new Promise(function(resolve, reject) {
+
+
+        userResponse(currentgame);
+
+        resolve(true);
+
+        reject(false);
+
+    });
+
 
     //wait for response to finish
+    await roundComplete;
 
     //if response correct, function calls itself again
     //RESPONSE CORRECT WHEN ??? ROUNDWON = TRUE
-
     //if response incorrect, exit out of function, end game
     //RESPONSE INCORRECT WHEN GAMELOST= TRUE
+    if (roundComplete === true) {
 
+        //user successfully finished the round
+        //start a new one
+        newRound();
+
+    }
+    else {
+
+        //user failed the round, game over
+        exitGame();
+
+    }
 
 }
 
-//lightSequence();
-
-//userResponse();
+function exitGame () {
+    console.log("GAME OVER");
+}
