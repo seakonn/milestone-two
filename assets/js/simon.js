@@ -343,7 +343,28 @@ function checkAnswer(answers, clicks, button) {
 }
 
 
+//this function starts a new round of lights
+//it will keep calling itself until the player gets an answer wrong
+async function newRound() {
+    
+    //start a sequence of lights
+    
+    //wait until the light have finished
+    
+    //allow the user to respond
+    
+    //wait for response to finish
+    
+    //if response correct, function calls itself again
+    
+    //if response incorrect, exit out of function, end game
+    
+    
+}
 
 //lightSequence();
 
 //userResponse();
+
+
+
