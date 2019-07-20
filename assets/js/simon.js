@@ -53,25 +53,7 @@ function newGame() {
 
     var game = new GameState();
 
-
-
-    lightSequence(game.sequence, userResponse, game);
-    console.log(game.sequence);
-
-    /*
-    lightSequence(game.sequence, userResponse, game);
-    console.log(game.sequence)
-    */
-
-    //continue the game indefinitely until the player loses
-
-
-    /*
-    while(!game.gameLost) {
-        
-        
-    }
-    */
+    newRound(game);
 
 }
 
@@ -301,7 +283,7 @@ function checkAnswer(currentgame, clicks, button) {
         //start new round
         if (clicks === currentgame.sequence.length) {
             console.log("ALL ANSWERS CORRECT");
-            
+            currentgame.roundWon = true;
             return false;
         }
 }
@@ -338,10 +320,16 @@ async function newRound(currentgame) {
 
 
         userResponse(currentgame);
-
-        resolve(true);
-
-        reject(false);
+        
+        
+        if (currentgame.roundWon === true) {
+            resolve(true);
+        }
+        
+        if(currentgame.gameLost === true) {
+            reject(false);
+        }
+        
 
     });
 
