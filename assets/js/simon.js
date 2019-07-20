@@ -344,22 +344,27 @@ function checkAnswer(answers, clicks, button) {
 //it will keep calling itself until the player gets an answer wrong
 async function newRound(currentgame) {
     
-    //start a sequence of lights
     
+    //promise ensures that the buttons will not be activated until the lights
+    //have finished displaying
     var lightsFinished = new Promise(function(resolve, reject) {
         
-        lightSequence(testseq, game);
+        //display the sequence of lights so far
+        lightSequence(currentgame);
         
-        //sequence finished after (X*1000 - 500 milliseconds where X is sequence length
+        //need to know when the lights have finished displaying
+        //sequence finished after (X*1000) - 500 milliseconds where X is sequence length
+        //when finished, promise is resolved
         setTimeout(function () {
+            
             resolve();
-        }, ((testseq.length)*1000)-500);
-        //if finished lighting lights then call user input
             
+        }, ((currentgame.sequence.length)*1000)-500);
         
-            
     });
+    
     //wait until the light have finished
+    await lightsFinished;
     
     //allow the user to respond
     
