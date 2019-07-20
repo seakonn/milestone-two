@@ -39,6 +39,11 @@ function GameState() {
 
     //game is not lost until the player makes a mistake
     this.gameLost = false;
+    
+    //the status of the current round
+    //only assigned to true if user gets all answers correct
+    //then its value is reset
+    this.roundWon = false;
 
 
 }
@@ -270,29 +275,11 @@ function userResponse(currentgame) {
 
 
         }
-
-
-
-        //in addition to changing the colour back, we want to see
-        //if the user clicked the correct button
-        //also if all correct, we want to exit out of here and
-        //proceed to the next round
-
-
-
-
-
     });
 
-
-
-
-
     //delete the listeners when user input is finished
-
-
-
 }
+
 
 //checks the users input so far against the stored
 //answer. Returns true if correct, false if incorrect.
@@ -303,7 +290,7 @@ function checkAnswer(answers, clicks, button) {
     //then the game is over
     if (answers[clicks - 1] !== button) {
         console.log("WRONG");
-        allowUserInput = false;
+        
         return true;
     }
 
@@ -314,15 +301,9 @@ function checkAnswer(answers, clicks, button) {
         //start new round
         if (clicks === answers.length) {
             console.log("ALL ANSWERS CORRECT");
-            allowUserInput = false;
+        
             return false;
         }
-
-
-
-
-
-
 }
 
 
@@ -371,12 +352,12 @@ async function newRound(currentgame) {
     //if response correct, function calls itself again
     //RESPONSE CORRECT WHEN ??? ROUNDWON = TRUE
     //if response incorrect, exit out of function, end game
-    //RESPONSE INCORRECT WHEN GAMELOST= TRUE
+    //RESPONSE INCORRECT WHEN ANSWER = INCORRECT
     if (roundComplete === true) {
 
         //user successfully finished the round
         //start a new one
-        newRound();
+        newRound(currentgame);
 
     }
     else {
