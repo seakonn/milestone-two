@@ -249,28 +249,28 @@ function userResponse(currentgame) {
             case buttons[0].divElement:
                 toggleLight(0);
                 numOfAnswers++;
-                currentgame.gameLost = checkAnswer(seq, numOfAnswers, 0);
+                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 0);
                 break;
 
                 //red button was clicked
             case buttons[1].divElement:
                 toggleLight(1);
                 numOfAnswers++;
-                gameobj.gameLost = checkAnswer(seq, numOfAnswers, 1);
+                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 1);
                 break;
 
                 //yellow button was clicked
             case buttons[2].divElement:
                 toggleLight(2);
                 numOfAnswers++;
-                gameobj.gameLost = checkAnswer(seq, numOfAnswers, 2);
+                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 2);
                 break;
 
                 //blue button was clicked
             case buttons[3].divElement:
                 toggleLight(3);
                 numOfAnswers++;
-                gameobj.gameLost = checkAnswer(seq, numOfAnswers, 3);
+                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 3);
                 break;
 
 
@@ -283,12 +283,12 @@ function userResponse(currentgame) {
 
 //checks the users input so far against the stored
 //answer. Returns true if correct, false if incorrect.
-function checkAnswer(answers, clicks, button) {
+function checkAnswer(currentgame, clicks, button) {
 
 
     //if the button just clicked is not the next one in the sequence
     //then the game is over
-    if (answers[clicks - 1] !== button) {
+    if (currentgame.sequence[clicks - 1] !== button) {
         console.log("WRONG");
         
         return true;
@@ -299,9 +299,9 @@ function checkAnswer(answers, clicks, button) {
         //if we have the same number of clicks as answers
         //all answers must have been correct
         //start new round
-        if (clicks === answers.length) {
+        if (clicks === currentgame.sequence.length) {
             console.log("ALL ANSWERS CORRECT");
-        
+            
             return false;
         }
 }
