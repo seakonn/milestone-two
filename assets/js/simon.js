@@ -259,18 +259,6 @@ function blinkLight(buttonNum, duration) {
 }
 
 
-//gets input from the user via mouse clicks
-//buttons are activated when this function is called
-function userResponse(currentgame) {
-
-    var numOfAnswers = 0;
-
-
-
-    //delete the listeners when user input is finished
-}
-
-
 //checks the users input so far against the stored
 //answer. Returns true if correct, false if incorrect.
 function checkAnswer(currentgame, clicks, button) {
