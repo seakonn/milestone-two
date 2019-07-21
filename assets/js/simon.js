@@ -63,8 +63,8 @@ function newGame() {
 //passes in the current sequence of lights
 function lightSequence(currentgame) {
 
-
-
+    //the duration in ms for how long each light is lit for
+    var timeLit = 500;
 
     //light all the lights lit so far
     //go through sequence array and call toggleLight
@@ -91,7 +91,7 @@ function lightSequence(currentgame) {
 
 
     //The first light in the sequence is lit without delay
-    blinkLight(firstLight, 500);
+    blinkLight(firstLight, timeLit);
 
     //the rest of the lights light with a delay between them
 
@@ -101,14 +101,14 @@ function lightSequence(currentgame) {
 
             //light the lights in sequence ...
             if (position > 0) {
-                blinkLight(currentgame.sequence[sequenceLength - position], 500);
+                blinkLight(currentgame.sequence[sequenceLength - position], timeLit);
             }
             //when we have lit them all, light a random one
             //assuming the random one hasn't already lit
             else if (!isRandomLit) {
 
                 //light a random light
-                blinkLight(randomNumber, 500);
+                blinkLight(randomNumber, timeLit);
 
                 //store this new light in the sequence
             }
@@ -271,7 +271,7 @@ function checkAnswer(currentgame, clicks, button) {
     //if the button just clicked is not the next one in the sequence
     //then the game is over
     if (currentgame.sequence[clicks - 1] !== button) {
-        console.log("WRONG");
+        console.log("Gamelost is now True");
         
         return true;
     }
@@ -282,7 +282,7 @@ function checkAnswer(currentgame, clicks, button) {
         //all answers must have been correct
         //start new round
         if (clicks === currentgame.sequence.length) {
-            console.log("ALL ANSWERS CORRECT");
+            console.log("RoundWon is now True");
             currentgame.roundWon = true;
             return false;
         }
@@ -315,20 +315,25 @@ async function newRound(currentgame) {
     });
 
     //wait until the light have finished
+    console.log("before 1st promise");
     await lightsFinished;
-
+    console.log("1st promise complete");
+    
     //allow the user to respond
     var roundComplete = new Promise(function(resolve, reject) {
 
 
         userResponse(currentgame);
         
-        
+        console.log("before roundwon");
         if (currentgame.roundWon === true) {
+            console.log("round Won");
             resolve(true);
+            
         }
         
         if(currentgame.gameLost === true) {
+            console.log("game lost");
             reject(false);
         }
         
@@ -338,6 +343,7 @@ async function newRound(currentgame) {
 
     //wait for response to finish
     await roundComplete;
+    console.log("2nd Promise Complete");
 
     //if response correct, function calls itself again
     //RESPONSE CORRECT WHEN ??? ROUNDWON = TRUE
