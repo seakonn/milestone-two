@@ -39,12 +39,12 @@ function GameState() {
 
     //game is not lost until the player makes a mistake
     this.gameLost = false;
-    
+
     //the status of the current round
     //only assigned to true if user gets all answers correct
     //then its value is reset
     this.roundWon = false;
-    
+
     //user is only allowed to click buttons after the lights have finished lighting
     this.allowUserInput = false;
 
@@ -55,6 +55,8 @@ function GameState() {
 function newGame() {
 
     var game = new GameState();
+
+    var numOfAnswers = 0;
 
     //when the mouse button is depressed, the colour changes to lit state
     document.addEventListener("mousedown", function(event) {
@@ -98,36 +100,36 @@ function newGame() {
             case buttons[0].divElement:
                 toggleLight(0);
                 numOfAnswers++;
-                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 0);
+                game.gameLost = checkAnswer(game, numOfAnswers, 0);
                 break;
 
                 //red button was clicked
             case buttons[1].divElement:
                 toggleLight(1);
                 numOfAnswers++;
-                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 1);
+                game.gameLost = checkAnswer(game, numOfAnswers, 1);
                 break;
 
                 //yellow button was clicked
             case buttons[2].divElement:
                 toggleLight(2);
                 numOfAnswers++;
-                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 2);
+                game.gameLost = checkAnswer(game, numOfAnswers, 2);
                 break;
 
                 //blue button was clicked
             case buttons[3].divElement:
                 toggleLight(3);
                 numOfAnswers++;
-                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 3);
+                game.gameLost = checkAnswer(game, numOfAnswers, 3);
                 break;
 
 
         }
     });
-    
+
     newRound(game);
-    
+
 
 }
 
@@ -263,7 +265,7 @@ function userResponse(currentgame) {
 
     var numOfAnswers = 0;
 
-    
+
 
     //delete the listeners when user input is finished
 }
@@ -278,7 +280,7 @@ function checkAnswer(currentgame, clicks, button) {
     //then the game is over
     if (currentgame.sequence[clicks - 1] !== button) {
         console.log("Gamelost is now True");
-        
+
         return true;
     }
 
@@ -301,7 +303,7 @@ async function newRound(currentgame) {
 
     //reset this variable at the start of a new round
     currentgame.roundWon = false;
-    
+
     //promise ensures that the buttons will not be activated until the lights
     //have finished displaying
     var lightsFinished = new Promise(function(resolve, reject) {
@@ -322,26 +324,26 @@ async function newRound(currentgame) {
 
     //wait until the light have finished
     await lightsFinished;
-    
-    
-    
+
+
+
     var roundComplete = new Promise(function(resolve, reject) {
 
 
         userResponse(currentgame);
-        
-        
+
+
         if (currentgame.roundWon === true) {
             console.log("round Won");
             resolve(true);
-            
+
         }
-        
-        if(currentgame.gameLost === true) {
+
+        if (currentgame.gameLost === true) {
             console.log("game lost");
             reject(false);
         }
-        
+
 
     });
 
@@ -371,6 +373,6 @@ async function newRound(currentgame) {
 
 }
 
-function exitGame () {
+function exitGame() {
     console.log("GAME OVER");
 }
