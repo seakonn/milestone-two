@@ -12,9 +12,17 @@ document.getElementById("new-game-button").addEventListener("click", function() 
 
 function SimonButton(normalClass, litClass) {
 
+    //the css class for a button's normal colour
     this.normalClass = normalClass;
+    
+    //the css class for a button's lit colour
     this.litClass = litClass;
+    
+    //the corresponding div for the button
     this.divElement = document.getElementsByClassName(this.normalClass)[0];
+    
+    //only assigned true if a mousedown event occurs on the button
+    this.pressed = false;
 }
 
 //an array to store the button objects in
@@ -29,9 +37,6 @@ const buttons = [
 ];
 
 
-//game state object
-//holds current sequence in a value
-//holds current score in a value
 function GameState() {
 
     //stores the lights lit so far by the game
@@ -41,7 +46,7 @@ function GameState() {
     this.gameLost = false;
 
     //the status of the current round
-    //only assigned to true if user gets all answers correct
+    //only assigned to true if user gets all answers correct in a round
     //then its value is reset
     this.roundWon = false;
 
@@ -341,7 +346,6 @@ function newRound(currentgame) {
 
 
     //reset these variables at the start of a new round
-    console.log(currentgame.sequence);
     currentgame.roundWon = false;
     currentgame.allowUserInput = false;
 
