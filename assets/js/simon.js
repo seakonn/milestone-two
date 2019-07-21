@@ -297,82 +297,31 @@ function checkAnswer(currentgame, clicks, button) {
 }
 
 
-//this function starts a new round of lights, and player response to those lights
-//it will keep calling itself until the player gets an answer wrong
-async function newRound(currentgame) {
+//this function starts a new round of lights and allows the player to respond to them
+function newRound(currentgame) {
 
-    //reset this variable at the start of a new round
+
+    //reset these variables at the start of a new round
     currentgame.roundWon = false;
-
-    //promise ensures that the buttons will not be activated until the lights
-    //have finished displaying
-    var lightsFinished = new Promise(function(resolve, reject) {
-
-        //display the sequence of lights so far
-        lightSequence(currentgame);
-
-        //need to know when the lights have finished displaying
-        //sequence finished after (X*1000) - 500 milliseconds where X is sequence length
-        //when finished, promise is resolved
-        setTimeout(function() {
-
-            resolve();
-
-        }, ((currentgame.sequence.length) * 1000) - 500);
-
-    });
-
-    //wait until the light have finished
-    await lightsFinished;
+    currentgame.allowUserInput = false;
 
 
-
-    var roundComplete = new Promise(function(resolve, reject) {
-
-
-        userResponse(currentgame);
+    //display the sequence of lights so far
+    lightSequence(currentgame);
 
 
-        if (currentgame.roundWon === true) {
-            console.log("round Won");
-            resolve(true);
+    //need to know when the lights have finished displaying
+    //sequence finished after (X*1000) - 500 milliseconds where X is sequence length
+    setTimeout(function() {
 
-        }
+        currentgame.allowUserInput = true;
 
-        if (currentgame.gameLost === true) {
-            console.log("game lost");
-            reject(false);
-        }
-
-
-    });
-
-
-    //wait for response to finish
-    console.log("before 2nd promise");
-    await roundComplete;
-    console.log("2nd Promise Complete");
-
-    //if response correct, function calls itself again
-    //RESPONSE CORRECT WHEN ??? ROUNDWON = TRUE
-    //if response incorrect, exit out of function, end game
-    //RESPONSE INCORRECT WHEN ANSWER = INCORRECT
-    if (roundComplete === true) {
-
-        //user successfully finished the round
-        //start a new one
-        newRound(currentgame);
-
-    }
-    else {
-
-        //user failed the round, game over
-        exitGame();
-
-    }
+    }, ((currentgame.sequence.length) * 1000) - 500);
 
 }
 
+
+//exits THE GAME
 function exitGame() {
     console.log("GAME OVER");
 }
