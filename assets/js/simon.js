@@ -114,6 +114,7 @@ function newGame() {
                     
                     if(game.roundWon) {
                         newRound(game);
+                        numOfAnswers = 0;
                     }
                     
                     break;
@@ -131,6 +132,7 @@ function newGame() {
                     
                     if(game.roundWon) {
                         newRound(game);
+                        numOfAnswers = 0;
                     }
                     
                     break;
@@ -148,6 +150,7 @@ function newGame() {
                     
                     if(game.roundWon) {
                         newRound(game);
+                        numOfAnswers = 0;
                     }
                     
                     
@@ -166,6 +169,7 @@ function newGame() {
                     
                     if(game.roundWon) {
                         newRound(game);
+                        numOfAnswers = 0;
                     }
                     
                     break;
@@ -338,6 +342,7 @@ function newRound(currentgame) {
 
 
     //reset these variables at the start of a new round
+    console.log(currentgame.sequence);
     currentgame.roundWon = false;
     currentgame.allowUserInput = false;
 
