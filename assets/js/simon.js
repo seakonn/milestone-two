@@ -69,6 +69,7 @@ function newGame() {
         //button is only allowed to be pressed if the light sequence has finished
         if (game.allowUserInput === true) {
 
+            
             //checks to see which button (if any) were pressed
             switch (event.target) {
 
@@ -108,6 +109,17 @@ function newGame() {
 
         if (game.allowUserInput === true) {
 
+            
+            //want the colour to change back regardless of where mouseup occurs
+            //if green pressed, toggle green etc
+            for(var i=0; i<buttons.length; i++) {
+                
+                if(buttons[i].pressed === true) {
+                    toggleLight(i);
+                }
+            }
+            
+            
             //checks to see which button (if any) were pressed
             switch (event.target) {
 
@@ -116,7 +128,7 @@ function newGame() {
                     //only trigger mouseup if there is a corresponding mousedown
                     if (buttons[0].pressed === true) {
                         
-                        toggleLight(0);
+                        
                         numOfAnswers++;
                         game.gameLost = checkAnswer(game, numOfAnswers, 0);
 
@@ -140,7 +152,7 @@ function newGame() {
                     //only trigger mouseup if there is a corresponding mousedown
                     if (buttons[1].pressed === true) {
                         
-                        toggleLight(1);
+                        
                         numOfAnswers++;
                         game.gameLost = checkAnswer(game, numOfAnswers, 1);
 
@@ -164,7 +176,7 @@ function newGame() {
                     //only trigger mouseup if there is a corresponding mousedown
                     if (buttons[2].pressed === true) {
                         
-                        toggleLight(2);
+
                         numOfAnswers++;
                         game.gameLost = checkAnswer(game, numOfAnswers, 2);
 
@@ -187,8 +199,8 @@ function newGame() {
                 case buttons[3].divElement:
                     //only trigger mouseup if there is a corresponding mousedown
                     if (buttons[3].pressed === true) {
-                        buttons[3].pressed = false;
-                        toggleLight(3);
+
+
                         numOfAnswers++;
                         game.gameLost = checkAnswer(game, numOfAnswers, 3);
 
