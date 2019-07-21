@@ -109,7 +109,7 @@ function newGame() {
                     game.gameLost = checkAnswer(game, numOfAnswers, 0);
                     
                     if(game.gameLost) {
-                        exitGame();
+                        exitGame(game);
                     }
                     
                     if(game.roundWon) {
@@ -127,7 +127,7 @@ function newGame() {
                     
                     
                     if(game.gameLost) {
-                        exitGame();
+                        exitGame(game);
                     }
                     
                     if(game.roundWon) {
@@ -145,7 +145,7 @@ function newGame() {
                     
                     
                     if(game.gameLost) {
-                        exitGame();
+                        exitGame(game);
                     }
                     
                     if(game.roundWon) {
@@ -164,7 +164,7 @@ function newGame() {
                     
                     
                     if(game.gameLost) {
-                        exitGame();
+                        exitGame(game);
                     }
                     
                     if(game.roundWon) {
@@ -363,6 +363,8 @@ function newRound(currentgame) {
 
 
 //exits THE GAME
-function exitGame() {
+function exitGame(currentgame) {
+    
+    currentgame.allowUserInput = false;
     console.log("GAME OVER");
 }
