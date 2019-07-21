@@ -319,8 +319,7 @@ function checkAnswer(currentgame, clicks, button) {
     //if the button just clicked is not the next one in the sequence
     //then the game is over
     if (currentgame.sequence[clicks - 1] !== button) {
-        console.log("Gamelost is now True");
-
+        
         return true;
     }
 
@@ -330,7 +329,7 @@ function checkAnswer(currentgame, clicks, button) {
         //all answers must have been correct
         //start new round
         if (clicks === currentgame.sequence.length) {
-            console.log("RoundWon is now True");
+            
             currentgame.roundWon = true;
             return false;
         }
