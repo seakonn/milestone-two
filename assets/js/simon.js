@@ -315,17 +315,16 @@ async function newRound(currentgame) {
     });
 
     //wait until the light have finished
-    console.log("before 1st promise");
     await lightsFinished;
-    console.log("1st promise complete");
     
-    //allow the user to respond
+    
+    
     var roundComplete = new Promise(function(resolve, reject) {
 
 
         userResponse(currentgame);
         
-        console.log("before roundwon");
+        
         if (currentgame.roundWon === true) {
             console.log("round Won");
             resolve(true);
@@ -342,6 +341,7 @@ async function newRound(currentgame) {
 
 
     //wait for response to finish
+    console.log("before 2nd promise");
     await roundComplete;
     console.log("2nd Promise Complete");
 
