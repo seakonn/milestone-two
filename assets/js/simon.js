@@ -44,6 +44,9 @@ function GameState() {
     //only assigned to true if user gets all answers correct
     //then its value is reset
     this.roundWon = false;
+    
+    //user is only allowed to click buttons after the lights have finished lighting
+    this.allowUserInput = false;
 
 
 }
@@ -53,7 +56,78 @@ function newGame() {
 
     var game = new GameState();
 
+    //when the mouse button is depressed, the colour changes to lit state
+    document.addEventListener("mousedown", function(event) {
+
+        //checks to see which button (if any) were pressed
+        switch (event.target) {
+
+            //green button was clicked
+            case buttons[0].divElement:
+                toggleLight(0);
+                break;
+
+                //red button was clicked
+            case buttons[1].divElement:
+                toggleLight(1);
+                break;
+
+                //yellow button was clicked
+            case buttons[2].divElement:
+                toggleLight(2);
+                break;
+
+                //blue button was clicked
+            case buttons[3].divElement:
+                toggleLight(3);
+                break;
+
+        }
+
+    });
+
+
+    //when the mouse button is released, colour goes back to normal
+    //checks to see if the user clicked the right button in the sequence
+    document.addEventListener("mouseup", function(event) {
+
+        //checks to see which button (if any) were pressed
+        switch (event.target) {
+
+            //green button was clicked
+            case buttons[0].divElement:
+                toggleLight(0);
+                numOfAnswers++;
+                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 0);
+                break;
+
+                //red button was clicked
+            case buttons[1].divElement:
+                toggleLight(1);
+                numOfAnswers++;
+                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 1);
+                break;
+
+                //yellow button was clicked
+            case buttons[2].divElement:
+                toggleLight(2);
+                numOfAnswers++;
+                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 2);
+                break;
+
+                //blue button was clicked
+            case buttons[3].divElement:
+                toggleLight(3);
+                numOfAnswers++;
+                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 3);
+                break;
+
+
+        }
+    });
+    
     newRound(game);
+    
 
 }
 
@@ -189,75 +263,7 @@ function userResponse(currentgame) {
 
     var numOfAnswers = 0;
 
-    //when the mouse button is depressed, the colour changes to lit state
-    document.addEventListener("mousedown", function(event) {
-
-        //checks to see which button (if any) were pressed
-        switch (event.target) {
-
-            //green button was clicked
-            case buttons[0].divElement:
-                toggleLight(0);
-                break;
-
-                //red button was clicked
-            case buttons[1].divElement:
-                toggleLight(1);
-                break;
-
-                //yellow button was clicked
-            case buttons[2].divElement:
-                toggleLight(2);
-                break;
-
-                //blue button was clicked
-            case buttons[3].divElement:
-                toggleLight(3);
-                break;
-
-        }
-
-    });
-
-
-    //when the mouse button is released, colour goes back to normal
-    //checks to see if the user clicked the right button in the sequence
-    document.addEventListener("mouseup", function(event) {
-
-        //checks to see which button (if any) were pressed
-        switch (event.target) {
-
-            //green button was clicked
-            case buttons[0].divElement:
-                toggleLight(0);
-                numOfAnswers++;
-                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 0);
-                break;
-
-                //red button was clicked
-            case buttons[1].divElement:
-                toggleLight(1);
-                numOfAnswers++;
-                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 1);
-                break;
-
-                //yellow button was clicked
-            case buttons[2].divElement:
-                toggleLight(2);
-                numOfAnswers++;
-                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 2);
-                break;
-
-                //blue button was clicked
-            case buttons[3].divElement:
-                toggleLight(3);
-                numOfAnswers++;
-                currentgame.gameLost = checkAnswer(currentgame, numOfAnswers, 3);
-                break;
-
-
-        }
-    });
+    
 
     //delete the listeners when user input is finished
 }
