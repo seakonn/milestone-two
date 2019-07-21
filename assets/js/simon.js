@@ -107,6 +107,15 @@ function newGame() {
                     toggleLight(0);
                     numOfAnswers++;
                     game.gameLost = checkAnswer(game, numOfAnswers, 0);
+                    
+                    if(game.gameLost) {
+                        exitGame();
+                    }
+                    
+                    if(game.roundWon) {
+                        newRound(game);
+                    }
+                    
                     break;
 
                     //red button was clicked
@@ -114,6 +123,16 @@ function newGame() {
                     toggleLight(1);
                     numOfAnswers++;
                     game.gameLost = checkAnswer(game, numOfAnswers, 1);
+                    
+                    
+                    if(game.gameLost) {
+                        exitGame();
+                    }
+                    
+                    if(game.roundWon) {
+                        newRound(game);
+                    }
+                    
                     break;
 
                     //yellow button was clicked
@@ -121,6 +140,17 @@ function newGame() {
                     toggleLight(2);
                     numOfAnswers++;
                     game.gameLost = checkAnswer(game, numOfAnswers, 2);
+                    
+                    
+                    if(game.gameLost) {
+                        exitGame();
+                    }
+                    
+                    if(game.roundWon) {
+                        newRound(game);
+                    }
+                    
+                    
                     break;
 
                     //blue button was clicked
@@ -128,6 +158,16 @@ function newGame() {
                     toggleLight(3);
                     numOfAnswers++;
                     game.gameLost = checkAnswer(game, numOfAnswers, 3);
+                    
+                    
+                    if(game.gameLost) {
+                        exitGame();
+                    }
+                    
+                    if(game.roundWon) {
+                        newRound(game);
+                    }
+                    
                     break;
 
 
