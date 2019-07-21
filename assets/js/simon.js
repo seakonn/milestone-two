@@ -14,13 +14,13 @@ function SimonButton(normalClass, litClass) {
 
     //the css class for a button's normal colour
     this.normalClass = normalClass;
-    
+
     //the css class for a button's lit colour
     this.litClass = litClass;
-    
+
     //the corresponding div for the button
     this.divElement = document.getElementsByClassName(this.normalClass)[0];
-    
+
     //only assigned true if a mousedown event occurs on the button
     this.pressed = false;
 }
@@ -74,21 +74,25 @@ function newGame() {
 
                 //green button was clicked
                 case buttons[0].divElement:
+                    buttons[0].pressed = true;
                     toggleLight(0);
                     break;
 
                     //red button was clicked
                 case buttons[1].divElement:
+                    buttons[1].pressed = true;
                     toggleLight(1);
                     break;
 
                     //yellow button was clicked
                 case buttons[2].divElement:
+                    buttons[2].pressed = true;
                     toggleLight(2);
                     break;
 
                     //blue button was clicked
                 case buttons[3].divElement:
+                    buttons[3].pressed = true;
                     toggleLight(3);
                     break;
 
@@ -109,78 +113,109 @@ function newGame() {
 
                 //green button was clicked
                 case buttons[0].divElement:
-                    toggleLight(0);
-                    numOfAnswers++;
-                    game.gameLost = checkAnswer(game, numOfAnswers, 0);
-                    
-                    if(game.gameLost) {
-                        exitGame(game);
+                    //only trigger mouseup if there is a corresponding mousedown
+                    if (buttons[0].pressed === true) {
+                        
+                        toggleLight(0);
+                        numOfAnswers++;
+                        game.gameLost = checkAnswer(game, numOfAnswers, 0);
+
+                        if (game.gameLost) {
+                            exitGame(game);
+                        }
+
+                        if (game.roundWon) {
+                            newRound(game);
+                            numOfAnswers = 0;
+                        }
+
                     }
                     
-                    if(game.roundWon) {
-                        newRound(game);
-                        numOfAnswers = 0;
-                    }
                     
+
                     break;
 
                     //red button was clicked
                 case buttons[1].divElement:
-                    toggleLight(1);
-                    numOfAnswers++;
-                    game.gameLost = checkAnswer(game, numOfAnswers, 1);
-                    
-                    
-                    if(game.gameLost) {
-                        exitGame(game);
+                    //only trigger mouseup if there is a corresponding mousedown
+                    if (buttons[1].pressed === true) {
+                        
+                        toggleLight(1);
+                        numOfAnswers++;
+                        game.gameLost = checkAnswer(game, numOfAnswers, 1);
+
+                        if (game.gameLost) {
+                            exitGame(game);
+                        }
+
+                        if (game.roundWon) {
+                            newRound(game);
+                            numOfAnswers = 0;
+                        }
+
                     }
                     
-                    if(game.roundWon) {
-                        newRound(game);
-                        numOfAnswers = 0;
-                    }
+                    
                     
                     break;
 
                     //yellow button was clicked
                 case buttons[2].divElement:
-                    toggleLight(2);
-                    numOfAnswers++;
-                    game.gameLost = checkAnswer(game, numOfAnswers, 2);
-                    
-                    
-                    if(game.gameLost) {
-                        exitGame(game);
+                    //only trigger mouseup if there is a corresponding mousedown
+                    if (buttons[2].pressed === true) {
+                        
+                        toggleLight(2);
+                        numOfAnswers++;
+                        game.gameLost = checkAnswer(game, numOfAnswers, 2);
+
+                        if (game.gameLost) {
+                            exitGame(game);
+                        }
+
+                        if (game.roundWon) {
+                            newRound(game);
+                            numOfAnswers = 0;
+                        }
+
                     }
                     
-                    if(game.roundWon) {
-                        newRound(game);
-                        numOfAnswers = 0;
-                    }
                     
                     
                     break;
 
                     //blue button was clicked
                 case buttons[3].divElement:
-                    toggleLight(3);
-                    numOfAnswers++;
-                    game.gameLost = checkAnswer(game, numOfAnswers, 3);
-                    
-                    
-                    if(game.gameLost) {
-                        exitGame(game);
+                    //only trigger mouseup if there is a corresponding mousedown
+                    if (buttons[3].pressed === true) {
+                        buttons[3].pressed = false;
+                        toggleLight(3);
+                        numOfAnswers++;
+                        game.gameLost = checkAnswer(game, numOfAnswers, 3);
+
+                        if (game.gameLost) {
+                            exitGame(game);
+                        }
+
+                        if (game.roundWon) {
+                            newRound(game);
+                            numOfAnswers = 0;
+                        }
+
                     }
                     
-                    if(game.roundWon) {
-                        newRound(game);
-                        numOfAnswers = 0;
-                    }
+                    
                     
                     break;
 
 
-            }
+            } //end switch
+            
+            buttons[0].pressed = false;
+            buttons[1].pressed = false;
+            buttons[2].pressed = false;
+            buttons[3].pressed = false;
+            
+            
         }
 
     });
@@ -324,7 +359,7 @@ function checkAnswer(currentgame, clicks, button) {
     //if the button just clicked is not the next one in the sequence
     //then the game is over
     if (currentgame.sequence[clicks - 1] !== button) {
-        
+
         return true;
     }
 
@@ -334,7 +369,7 @@ function checkAnswer(currentgame, clicks, button) {
         //all answers must have been correct
         //start new round
         if (clicks === currentgame.sequence.length) {
-            
+
             currentgame.roundWon = true;
             return false;
         }
@@ -367,7 +402,7 @@ function newRound(currentgame) {
 
 //exits THE GAME
 function exitGame(currentgame) {
-    
+
     currentgame.allowUserInput = false;
     console.log("GAME OVER");
 }
