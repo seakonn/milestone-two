@@ -293,7 +293,9 @@ function checkAnswer(currentgame, clicks, button) {
 //it will keep calling itself until the player gets an answer wrong
 async function newRound(currentgame) {
 
-
+    //reset this variable at the start of a new round
+    currentgame.roundWon = false;
+    
     //promise ensures that the buttons will not be activated until the lights
     //have finished displaying
     var lightsFinished = new Promise(function(resolve, reject) {
