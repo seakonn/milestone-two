@@ -125,7 +125,7 @@ function newGame() {
                         }
 
                         if (game.roundWon) {
-                            newRound(game);
+                            setTimeout(() => newRound(game), 1000);
                             numOfAnswers = 0;
                         }
 
@@ -149,7 +149,7 @@ function newGame() {
                         }
 
                         if (game.roundWon) {
-                            newRound(game);
+                            setTimeout(() => newRound(game), 1000);
                             numOfAnswers = 0;
                         }
 
@@ -173,7 +173,7 @@ function newGame() {
                         }
 
                         if (game.roundWon) {
-                            newRound(game);
+                            setTimeout(() => newRound(game), 1000);
                             numOfAnswers = 0;
                         }
 
@@ -197,7 +197,7 @@ function newGame() {
                         }
 
                         if (game.roundWon) {
-                            newRound(game);
+                            setTimeout(() => newRound(game), 1000);
                             numOfAnswers = 0;
                         }
 
@@ -210,6 +210,7 @@ function newGame() {
 
             } //end switch
             
+            //reset the pressed variables
             buttons[0].pressed = false;
             buttons[1].pressed = false;
             buttons[2].pressed = false;
