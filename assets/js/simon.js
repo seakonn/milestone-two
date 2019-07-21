@@ -61,29 +61,33 @@ function newGame() {
     //when the mouse button is depressed, the colour changes to lit state
     document.addEventListener("mousedown", function(event) {
 
-        //checks to see which button (if any) were pressed
-        switch (event.target) {
+        //button is only allowed to be pressed if the light sequence has finished
+        if (game.allowUserInput === true) {
 
-            //green button was clicked
-            case buttons[0].divElement:
-                toggleLight(0);
-                break;
+            //checks to see which button (if any) were pressed
+            switch (event.target) {
 
-                //red button was clicked
-            case buttons[1].divElement:
-                toggleLight(1);
-                break;
+                //green button was clicked
+                case buttons[0].divElement:
+                    toggleLight(0);
+                    break;
 
-                //yellow button was clicked
-            case buttons[2].divElement:
-                toggleLight(2);
-                break;
+                    //red button was clicked
+                case buttons[1].divElement:
+                    toggleLight(1);
+                    break;
 
-                //blue button was clicked
-            case buttons[3].divElement:
-                toggleLight(3);
-                break;
+                    //yellow button was clicked
+                case buttons[2].divElement:
+                    toggleLight(2);
+                    break;
 
+                    //blue button was clicked
+                case buttons[3].divElement:
+                    toggleLight(3);
+                    break;
+
+            }
         }
 
     });
@@ -93,39 +97,43 @@ function newGame() {
     //checks to see if the user clicked the right button in the sequence
     document.addEventListener("mouseup", function(event) {
 
-        //checks to see which button (if any) were pressed
-        switch (event.target) {
+        if (game.allowUserInput === true) {
 
-            //green button was clicked
-            case buttons[0].divElement:
-                toggleLight(0);
-                numOfAnswers++;
-                game.gameLost = checkAnswer(game, numOfAnswers, 0);
-                break;
+            //checks to see which button (if any) were pressed
+            switch (event.target) {
 
-                //red button was clicked
-            case buttons[1].divElement:
-                toggleLight(1);
-                numOfAnswers++;
-                game.gameLost = checkAnswer(game, numOfAnswers, 1);
-                break;
+                //green button was clicked
+                case buttons[0].divElement:
+                    toggleLight(0);
+                    numOfAnswers++;
+                    game.gameLost = checkAnswer(game, numOfAnswers, 0);
+                    break;
 
-                //yellow button was clicked
-            case buttons[2].divElement:
-                toggleLight(2);
-                numOfAnswers++;
-                game.gameLost = checkAnswer(game, numOfAnswers, 2);
-                break;
+                    //red button was clicked
+                case buttons[1].divElement:
+                    toggleLight(1);
+                    numOfAnswers++;
+                    game.gameLost = checkAnswer(game, numOfAnswers, 1);
+                    break;
 
-                //blue button was clicked
-            case buttons[3].divElement:
-                toggleLight(3);
-                numOfAnswers++;
-                game.gameLost = checkAnswer(game, numOfAnswers, 3);
-                break;
+                    //yellow button was clicked
+                case buttons[2].divElement:
+                    toggleLight(2);
+                    numOfAnswers++;
+                    game.gameLost = checkAnswer(game, numOfAnswers, 2);
+                    break;
+
+                    //blue button was clicked
+                case buttons[3].divElement:
+                    toggleLight(3);
+                    numOfAnswers++;
+                    game.gameLost = checkAnswer(game, numOfAnswers, 3);
+                    break;
 
 
+            }
         }
+
     });
 
     newRound(game);
