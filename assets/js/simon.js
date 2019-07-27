@@ -234,7 +234,7 @@ function GameState() {
 }
 
 //used to refer to the current game state
-var game = null;
+var game = {};
 
 //functionality for when new game is pressed
 function newGame() {
@@ -374,7 +374,7 @@ function blinkLight(buttonNum, duration) {
 //answer. Returns true if correct, false if incorrect.
 function checkAnswer(currentgame, button) {
 
-    console.log("first el = " + currentgame.sequence[0]);
+    
     
     //if the button just clicked is not the next one in the sequence
     //then answer was incorrect, the game is over
@@ -401,7 +401,7 @@ function newRound(currentgame) {
 
 
     //reset these variables at the start of a new round
-    var numOfClicks = 0;
+    currentgame.responses = 0;
     currentgame.roundWon = false;
     currentgame.allowUserInput = false;
 
@@ -417,6 +417,8 @@ function newRound(currentgame) {
         currentgame.allowUserInput = true;
 
     }, ((currentgame.sequence.length) * 1000) - 500);
+
+    console.log(currentgame.sequence);
 
 }
 
