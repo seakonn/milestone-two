@@ -73,7 +73,7 @@ document.addEventListener("mouseup", function(event) {
 
 
                     game.responses++;
-                    game.gameLost = checkAnswer(game, game.responses, 0);
+                    game.gameLost = checkAnswer(game, 0);
 
                     if (game.gameLost) {
                         exitGame(game);
@@ -97,7 +97,7 @@ document.addEventListener("mouseup", function(event) {
 
 
                     game.responses++;
-                    game.gameLost = checkAnswer(game, game.responses, 1);
+                    game.gameLost = checkAnswer(game, 1);
 
                     if (game.gameLost) {
                         exitGame(game);
@@ -121,7 +121,7 @@ document.addEventListener("mouseup", function(event) {
 
 
                     game.responses++;
-                    game.gameLost = checkAnswer(game, game.responses, 2);
+                    game.gameLost = checkAnswer(game, 2);
 
                     if (game.gameLost) {
                         exitGame(game);
@@ -145,7 +145,7 @@ document.addEventListener("mouseup", function(event) {
 
 
                     game.responses++;
-                    game.gameLost = checkAnswer(game, game.responses, 3);
+                    game.gameLost = checkAnswer(game, 3);
 
                     if (game.gameLost) {
                         exitGame(game);
@@ -181,8 +181,6 @@ document.addEventListener("mouseup", function(event) {
 //creating button objects to store values associated with them
 //the refNumber uniquely identifies the button for use with any
 //random numbers generated
-
-
 function SimonButton(normalClass, litClass) {
 
     //the css class for a button's normal colour
@@ -198,6 +196,7 @@ function SimonButton(normalClass, litClass) {
     this.pressed = false;
     
 }
+
 
 //an array to store the button objects in
 //the index of each array element corresponds to a number from the random
@@ -247,9 +246,8 @@ function newGame() {
 }
 
 
-//when called, 'light up' the sequence of lights created so far
+//when called, display the sequence of lights created so far
 //for the player to see and a random one at the end
-//passes in the current sequence of lights
 function lightSequence(currentgame) {
 
     //the duration in ms for how long each light is lit for
@@ -365,7 +363,7 @@ function blinkLight(buttonNum, duration) {
     toggleLight(buttonNum);
     setTimeout(function() {
 
-        toggleLight(buttonNum)
+        toggleLight(buttonNum);
 
     }, duration);
 
@@ -374,22 +372,23 @@ function blinkLight(buttonNum, duration) {
 
 //checks the users input so far against the stored
 //answer. Returns true if correct, false if incorrect.
-function checkAnswer(currentgame, clicks, button) {
+function checkAnswer(currentgame, button) {
 
     console.log("first el = " + currentgame.sequence[0]);
+    
     //if the button just clicked is not the next one in the sequence
-    //then the game is over
-    if (currentgame.sequence[clicks - 1] !== button) {
+    //then answer was incorrect, the game is over
+    if (currentgame.sequence[currentgame.responses - 1] !== button) {
 
         return true;
     }
 
     else
 
-        //if we have the same number of clicks as answers
+        //if we have the same number of responses as sequence
         //all answers must have been correct
         //start new round
-        if (clicks === currentgame.sequence.length) {
+        if (currentgame.responses === currentgame.sequence.length) {
 
             currentgame.roundWon = true;
             return false;
