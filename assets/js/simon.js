@@ -197,9 +197,6 @@ function SimonButton(normalClass, litClass) {
     //only assigned true if a mousedown event occurs on the button
     this.pressed = false;
     
-    //this records the number of responses a player has made
-    //for the current round
-    this.responses = 0;
 }
 
 //an array to store the button objects in
@@ -229,6 +226,10 @@ function GameState() {
 
     //user is only allowed to click buttons after the lights have finished lighting
     this.allowUserInput = false;
+    
+    //this records the number of responses a player has made
+    //for the current round
+    this.responses = 0;
 
 
 }
