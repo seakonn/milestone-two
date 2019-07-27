@@ -81,7 +81,7 @@ document.addEventListener("mouseup", function(event) {
 
                     if (game.roundWon) {
                         setTimeout(() => newRound(game), 1000);
-                        numOfAnswers = 0;
+                        
                     }
 
                 }
@@ -105,7 +105,7 @@ document.addEventListener("mouseup", function(event) {
 
                     if (game.roundWon) {
                         setTimeout(() => newRound(game), 1000);
-                        numOfAnswers = 0;
+                        
                     }
 
                 }
@@ -129,7 +129,7 @@ document.addEventListener("mouseup", function(event) {
 
                     if (game.roundWon) {
                         setTimeout(() => newRound(game), 1000);
-                        numOfAnswers = 0;
+                        
                     }
 
                 }
@@ -153,7 +153,7 @@ document.addEventListener("mouseup", function(event) {
 
                     if (game.roundWon) {
                         setTimeout(() => newRound(game), 1000);
-                        numOfAnswers = 0;
+                        
                     }
 
                 }
