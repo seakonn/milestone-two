@@ -46,7 +46,135 @@ document.addEventListener("mousedown", function(event) {
 });
 
 
+//when the mouse button is released, colour goes back to normal
+//checks to see if the user clicked the right button in the sequence
+document.addEventListener("mouseup", function(event) {
 
+    if (game.allowUserInput === true) {
+
+
+        //want the colour to change back regardless of where mouseup occurs
+        //if green pressed, toggle green etc
+        for (var i = 0; i < buttons.length; i++) {
+
+            if (buttons[i].pressed === true) {
+                toggleLight(i);
+            }
+        }
+
+
+        //checks to see which button (if any) were pressed
+        switch (event.target) {
+
+            //green button was clicked
+            case buttons[0].divElement:
+                //only trigger mouseup if there is a corresponding mousedown
+                if (buttons[0].pressed === true) {
+
+
+                    numOfAnswers++;
+                    game.gameLost = checkAnswer(game, numOfAnswers, 0);
+
+                    if (game.gameLost) {
+                        exitGame(game);
+                    }
+
+                    if (game.roundWon) {
+                        setTimeout(() => newRound(game), 1000);
+                        numOfAnswers = 0;
+                    }
+
+                }
+
+
+
+                break;
+
+                //red button was clicked
+            case buttons[1].divElement:
+                //only trigger mouseup if there is a corresponding mousedown
+                if (buttons[1].pressed === true) {
+
+
+                    numOfAnswers++;
+                    game.gameLost = checkAnswer(game, numOfAnswers, 1);
+
+                    if (game.gameLost) {
+                        exitGame(game);
+                    }
+
+                    if (game.roundWon) {
+                        setTimeout(() => newRound(game), 1000);
+                        numOfAnswers = 0;
+                    }
+
+                }
+
+
+
+                break;
+
+                //yellow button was clicked
+            case buttons[2].divElement:
+                //only trigger mouseup if there is a corresponding mousedown
+                if (buttons[2].pressed === true) {
+
+
+                    numOfAnswers++;
+                    game.gameLost = checkAnswer(game, numOfAnswers, 2);
+
+                    if (game.gameLost) {
+                        exitGame(game);
+                    }
+
+                    if (game.roundWon) {
+                        setTimeout(() => newRound(game), 1000);
+                        numOfAnswers = 0;
+                    }
+
+                }
+
+
+
+                break;
+
+                //blue button was clicked
+            case buttons[3].divElement:
+                //only trigger mouseup if there is a corresponding mousedown
+                if (buttons[3].pressed === true) {
+
+
+                    numOfAnswers++;
+                    game.gameLost = checkAnswer(game, numOfAnswers, 3);
+
+                    if (game.gameLost) {
+                        exitGame(game);
+                    }
+
+                    if (game.roundWon) {
+                        setTimeout(() => newRound(game), 1000);
+                        numOfAnswers = 0;
+                    }
+
+                }
+
+
+
+                break;
+
+
+        } //end switch
+
+        //reset the pressed variables
+        buttons[0].pressed = false;
+        buttons[1].pressed = false;
+        buttons[2].pressed = false;
+        buttons[3].pressed = false;
+
+
+    }
+
+});
 
 
 
@@ -112,137 +240,6 @@ function newGame() {
     var numOfAnswers = 0;
 
 
-
-
-    //when the mouse button is released, colour goes back to normal
-    //checks to see if the user clicked the right button in the sequence
-    document.addEventListener("mouseup", function(event) {
-
-        if (game.allowUserInput === true) {
-
-
-            //want the colour to change back regardless of where mouseup occurs
-            //if green pressed, toggle green etc
-            for (var i = 0; i < buttons.length; i++) {
-
-                if (buttons[i].pressed === true) {
-                    toggleLight(i);
-                }
-            }
-
-
-            //checks to see which button (if any) were pressed
-            switch (event.target) {
-
-                //green button was clicked
-                case buttons[0].divElement:
-                    //only trigger mouseup if there is a corresponding mousedown
-                    if (buttons[0].pressed === true) {
-
-
-                        numOfAnswers++;
-                        game.gameLost = checkAnswer(game, numOfAnswers, 0);
-
-                        if (game.gameLost) {
-                            exitGame(game);
-                        }
-
-                        if (game.roundWon) {
-                            setTimeout(() => newRound(game), 1000);
-                            numOfAnswers = 0;
-                        }
-
-                    }
-
-
-
-                    break;
-
-                    //red button was clicked
-                case buttons[1].divElement:
-                    //only trigger mouseup if there is a corresponding mousedown
-                    if (buttons[1].pressed === true) {
-
-
-                        numOfAnswers++;
-                        game.gameLost = checkAnswer(game, numOfAnswers, 1);
-
-                        if (game.gameLost) {
-                            exitGame(game);
-                        }
-
-                        if (game.roundWon) {
-                            setTimeout(() => newRound(game), 1000);
-                            numOfAnswers = 0;
-                        }
-
-                    }
-
-
-
-                    break;
-
-                    //yellow button was clicked
-                case buttons[2].divElement:
-                    //only trigger mouseup if there is a corresponding mousedown
-                    if (buttons[2].pressed === true) {
-
-
-                        numOfAnswers++;
-                        game.gameLost = checkAnswer(game, numOfAnswers, 2);
-
-                        if (game.gameLost) {
-                            exitGame(game);
-                        }
-
-                        if (game.roundWon) {
-                            setTimeout(() => newRound(game), 1000);
-                            numOfAnswers = 0;
-                        }
-
-                    }
-
-
-
-                    break;
-
-                    //blue button was clicked
-                case buttons[3].divElement:
-                    //only trigger mouseup if there is a corresponding mousedown
-                    if (buttons[3].pressed === true) {
-
-
-                        numOfAnswers++;
-                        game.gameLost = checkAnswer(game, numOfAnswers, 3);
-
-                        if (game.gameLost) {
-                            exitGame(game);
-                        }
-
-                        if (game.roundWon) {
-                            setTimeout(() => newRound(game), 1000);
-                            numOfAnswers = 0;
-                        }
-
-                    }
-
-
-
-                    break;
-
-
-            } //end switch
-
-            //reset the pressed variables
-            buttons[0].pressed = false;
-            buttons[1].pressed = false;
-            buttons[2].pressed = false;
-            buttons[3].pressed = false;
-
-
-        }
-
-    });
 
     newRound(game);
 
