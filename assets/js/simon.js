@@ -5,6 +5,51 @@ document.getElementById("new-game-button").addEventListener("click", function() 
     newGame();
 });
 
+
+//when the mouse button is depressed, the colour changes to lit state
+document.addEventListener("mousedown", function(event) {
+
+    //button is only allowed to be pressed if the light sequence has finished
+    if (game.allowUserInput === true) {
+
+
+        //checks to see which button (if any) were pressed
+        switch (event.target) {
+
+            //green button was clicked
+            case buttons[0].divElement:
+                buttons[0].pressed = true;
+                toggleLight(0);
+                break;
+
+                //red button was clicked
+            case buttons[1].divElement:
+                buttons[1].pressed = true;
+                toggleLight(1);
+                break;
+
+                //yellow button was clicked
+            case buttons[2].divElement:
+                buttons[2].pressed = true;
+                toggleLight(2);
+                break;
+
+                //blue button was clicked
+            case buttons[3].divElement:
+                buttons[3].pressed = true;
+                toggleLight(3);
+                break;
+
+        }
+    }
+
+});
+
+
+
+
+
+
 //creating button objects to store values associated with them
 //the refNumber uniquely identifies the button for use with any
 //random numbers generated
@@ -66,44 +111,7 @@ function newGame() {
 
     var numOfAnswers = 0;
 
-    //when the mouse button is depressed, the colour changes to lit state
-    document.addEventListener("mousedown", function(event) {
 
-        //button is only allowed to be pressed if the light sequence has finished
-        if (game.allowUserInput === true) {
-
-            
-            //checks to see which button (if any) were pressed
-            switch (event.target) {
-
-                //green button was clicked
-                case buttons[0].divElement:
-                    buttons[0].pressed = true;
-                    toggleLight(0);
-                    break;
-
-                    //red button was clicked
-                case buttons[1].divElement:
-                    buttons[1].pressed = true;
-                    toggleLight(1);
-                    break;
-
-                    //yellow button was clicked
-                case buttons[2].divElement:
-                    buttons[2].pressed = true;
-                    toggleLight(2);
-                    break;
-
-                    //blue button was clicked
-                case buttons[3].divElement:
-                    buttons[3].pressed = true;
-                    toggleLight(3);
-                    break;
-
-            }
-        }
-
-    });
 
 
     //when the mouse button is released, colour goes back to normal
@@ -112,17 +120,17 @@ function newGame() {
 
         if (game.allowUserInput === true) {
 
-            
+
             //want the colour to change back regardless of where mouseup occurs
             //if green pressed, toggle green etc
-            for(var i=0; i<buttons.length; i++) {
-                
-                if(buttons[i].pressed === true) {
+            for (var i = 0; i < buttons.length; i++) {
+
+                if (buttons[i].pressed === true) {
                     toggleLight(i);
                 }
             }
-            
-            
+
+
             //checks to see which button (if any) were pressed
             switch (event.target) {
 
@@ -130,11 +138,11 @@ function newGame() {
                 case buttons[0].divElement:
                     //only trigger mouseup if there is a corresponding mousedown
                     if (buttons[0].pressed === true) {
-                        
-                        
+
+
                         numOfAnswers++;
                         game.gameLost = checkAnswer(game, numOfAnswers, 0);
-                       
+
                         if (game.gameLost) {
                             exitGame(game);
                         }
@@ -145,8 +153,8 @@ function newGame() {
                         }
 
                     }
-                    
-                    
+
+
 
                     break;
 
@@ -154,8 +162,8 @@ function newGame() {
                 case buttons[1].divElement:
                     //only trigger mouseup if there is a corresponding mousedown
                     if (buttons[1].pressed === true) {
-                        
-                        
+
+
                         numOfAnswers++;
                         game.gameLost = checkAnswer(game, numOfAnswers, 1);
 
@@ -169,16 +177,16 @@ function newGame() {
                         }
 
                     }
-                    
-                    
-                    
+
+
+
                     break;
 
                     //yellow button was clicked
                 case buttons[2].divElement:
                     //only trigger mouseup if there is a corresponding mousedown
                     if (buttons[2].pressed === true) {
-                        
+
 
                         numOfAnswers++;
                         game.gameLost = checkAnswer(game, numOfAnswers, 2);
@@ -193,9 +201,9 @@ function newGame() {
                         }
 
                     }
-                    
-                    
-                    
+
+
+
                     break;
 
                     //blue button was clicked
@@ -217,21 +225,21 @@ function newGame() {
                         }
 
                     }
-                    
-                    
-                    
+
+
+
                     break;
 
 
             } //end switch
-            
+
             //reset the pressed variables
             buttons[0].pressed = false;
             buttons[1].pressed = false;
             buttons[2].pressed = false;
             buttons[3].pressed = false;
-            
-            
+
+
         }
 
     });
