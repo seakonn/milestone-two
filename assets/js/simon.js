@@ -72,8 +72,8 @@ document.addEventListener("mouseup", function(event) {
                 if (buttons[0].pressed === true) {
 
 
-                    numOfAnswers++;
-                    game.gameLost = checkAnswer(game, numOfAnswers, 0);
+                    game.responses++;
+                    game.gameLost = checkAnswer(game, game.responses, 0);
 
                     if (game.gameLost) {
                         exitGame(game);
@@ -96,8 +96,8 @@ document.addEventListener("mouseup", function(event) {
                 if (buttons[1].pressed === true) {
 
 
-                    numOfAnswers++;
-                    game.gameLost = checkAnswer(game, numOfAnswers, 1);
+                    game.responses++;
+                    game.gameLost = checkAnswer(game, game.responses, 1);
 
                     if (game.gameLost) {
                         exitGame(game);
@@ -120,8 +120,8 @@ document.addEventListener("mouseup", function(event) {
                 if (buttons[2].pressed === true) {
 
 
-                    numOfAnswers++;
-                    game.gameLost = checkAnswer(game, numOfAnswers, 2);
+                    game.responses++;
+                    game.gameLost = checkAnswer(game, game.responses, 2);
 
                     if (game.gameLost) {
                         exitGame(game);
@@ -144,8 +144,8 @@ document.addEventListener("mouseup", function(event) {
                 if (buttons[3].pressed === true) {
 
 
-                    numOfAnswers++;
-                    game.gameLost = checkAnswer(game, numOfAnswers, 3);
+                    game.responses++;
+                    game.gameLost = checkAnswer(game, game.responses, 3);
 
                     if (game.gameLost) {
                         exitGame(game);
@@ -196,6 +196,10 @@ function SimonButton(normalClass, litClass) {
 
     //only assigned true if a mousedown event occurs on the button
     this.pressed = false;
+    
+    //this records the number of responses a player has made
+    //for the current round
+    this.responses = 0;
 }
 
 //an array to store the button objects in
@@ -237,13 +241,8 @@ function newGame() {
 
     game = new GameState();
 
-    var numOfAnswers = 0;
-
-
-
     newRound(game);
-
-
+    
 }
 
 
@@ -402,6 +401,7 @@ function newRound(currentgame) {
 
 
     //reset these variables at the start of a new round
+    var numOfClicks = 0;
     currentgame.roundWon = false;
     currentgame.allowUserInput = false;
 
