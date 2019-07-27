@@ -418,7 +418,7 @@ function newRound(currentgame) {
 
     }, ((currentgame.sequence.length) * 1000) - 500);
 
-    console.log(currentgame.sequence);
+    
 
 }
 
