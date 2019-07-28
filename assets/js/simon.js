@@ -106,6 +106,9 @@ document.addEventListener("mouseup", function(event) {
                 //disable the new game button
                 document.getElementById("new-game-button").setAttribute("disabled", "");
 
+                //update current score html
+                document.getElementById("current-score").innerHTML = game.sequence.length;
+
                 game.allowUserInput = false;
                 setTimeout(() => newRound(game), 1000);
 
