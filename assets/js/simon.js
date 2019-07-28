@@ -197,6 +197,10 @@ function newGame() {
     blinkLight(1, startGameDelay);
     blinkLight(2, startGameDelay);
     blinkLight(3, startGameDelay);
+    
+    //reset current score html
+    document.getElementById("current-score").innerHTML = "";
+    
 
     game = new GameState();
 
