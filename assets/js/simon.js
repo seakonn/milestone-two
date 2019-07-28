@@ -90,7 +90,7 @@ document.addEventListener("mouseup", function(event) {
 
         } //end switch
 
-    
+
         //only trigger mouseup if there is a corresponding mousedown
         if (buttons[justClicked].pressed === true) {
 
@@ -102,7 +102,13 @@ document.addEventListener("mouseup", function(event) {
             }
 
             if (game.roundWon) {
+
+                //disable the new game button
+                document.getElementById("new-game-button").setAttribute("disabled", "");
+                
+                game.allowUserInput = false;
                 setTimeout(() => newRound(game), 1000);
+
             }
         }
 
@@ -182,6 +188,9 @@ var game = {};
 function newGame() {
 
     game = new GameState();
+
+    //new game button disabled after pressing it
+    document.getElementById("new-game-button").setAttribute("disabled", "");
 
     newRound(game);
 
@@ -341,14 +350,9 @@ function checkAnswer(currentgame, button) {
 //this function starts a new round of lights and allows the player to respond to them
 function newRound(currentgame) {
 
-    //disable the new game button for the duration of the lights being displayed
-    document.getElementById("new-game-button").setAttribute("disabled", "");
-
     //reset these variables at the start of a new round
     currentgame.responses = 0;
     currentgame.roundWon = false;
-    currentgame.allowUserInput = false;
-
 
     //display the sequence of lights so far
     lightSequence(currentgame);
