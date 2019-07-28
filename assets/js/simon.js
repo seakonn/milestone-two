@@ -62,7 +62,7 @@ document.addEventListener("mouseup", function(event) {
             }
         }
 
-        var justClicked;
+        var justClicked = 0;
 
         //checks to see which button (if any) were pressed
         switch (event.target) {
