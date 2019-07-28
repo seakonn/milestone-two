@@ -399,7 +399,9 @@ function checkAnswer(currentgame, button) {
 //this function starts a new round of lights and allows the player to respond to them
 function newRound(currentgame) {
 
-
+    //disable the new game button for the duration of the lights being displayed
+    document.getElementById("new-game-button").setAttribute("disabled", "");
+    
     //reset these variables at the start of a new round
     currentgame.responses = 0;
     currentgame.roundWon = false;
@@ -413,12 +415,13 @@ function newRound(currentgame) {
     //need to know when the lights have finished displaying
     //sequence finished after (X*1000) - 500 milliseconds where X is sequence length
     setTimeout(function() {
+        
+        //re-enable new game button when lights have all lit
+        document.getElementById("new-game-button").removeAttribute("disabled");
 
         currentgame.allowUserInput = true;
-
+        
     }, ((currentgame.sequence.length) * 1000) - 500);
-
-    
 
 }
 
