@@ -19,25 +19,25 @@ document.addEventListener("mousedown", function(event) {
             //green button was clicked
             case buttons[0].divElement:
                 buttons[0].pressed = true;
-                toggleLight(0);
+                swapLitClass(0);
                 break;
 
                 //red button was clicked
             case buttons[1].divElement:
                 buttons[1].pressed = true;
-                toggleLight(1);
+                swapLitClass(1);
                 break;
 
                 //yellow button was clicked
             case buttons[2].divElement:
                 buttons[2].pressed = true;
-                toggleLight(2);
+                swapLitClass(2);
                 break;
 
                 //blue button was clicked
             case buttons[3].divElement:
                 buttons[3].pressed = true;
-                toggleLight(3);
+                swapLitClass(3);
                 break;
 
         }
@@ -58,7 +58,7 @@ document.addEventListener("mouseup", function(event) {
         for (var i = 0; i < buttons.length; i++) {
 
             if (buttons[i].pressed === true) {
-                toggleLight(i);
+                swapLitClass(i);
             }
         }
 
@@ -186,6 +186,9 @@ var game = {};
 
 //functionality for when new game is pressed
 function newGame() {
+    
+    //on new game, light all lights for a short duration before starting
+    
 
     game = new GameState();
 
@@ -205,7 +208,7 @@ function lightSequence(currentgame) {
     var timeLit = 500;
 
     //light all the lights lit so far
-    //go through sequence array and call toggleLight
+    //go through sequence array and call swapLitClass
     var sequenceLength = currentgame.sequence.length;
 
     //picks a random number between 1 and 4
@@ -272,7 +275,7 @@ function lightSequence(currentgame) {
 //turns a light from its normal state to its lit state, or vice versa
 //it takes in a number, which is used to find its corresponding class
 //it assumes that one of the classes supplied is already applied
-function toggleLight(buttonNumber) {
+function swapLitClass(buttonNumber) {
 
 
     var currentButton;
@@ -311,10 +314,10 @@ function toggleLight(buttonNumber) {
 //time the light is to stay lit.
 function blinkLight(buttonNum, duration) {
 
-    toggleLight(buttonNum);
+    swapLitClass(buttonNum);
     setTimeout(function() {
 
-        toggleLight(buttonNum);
+        swapLitClass(buttonNum);
 
     }, duration);
 
