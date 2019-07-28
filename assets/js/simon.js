@@ -62,108 +62,50 @@ document.addEventListener("mouseup", function(event) {
             }
         }
 
+        var justClicked;
 
         //checks to see which button (if any) were pressed
         switch (event.target) {
 
             //green button was clicked
             case buttons[0].divElement:
-                //only trigger mouseup if there is a corresponding mousedown
-                if (buttons[0].pressed === true) {
-
-
-                    game.responses++;
-                    game.gameLost = checkAnswer(game, 0);
-
-                    if (game.gameLost) {
-                        exitGame(game);
-                    }
-
-                    if (game.roundWon) {
-                        setTimeout(() => newRound(game), 1000);
-                        
-                    }
-
-                }
-
-
-
+                justClicked = 0;
                 break;
 
                 //red button was clicked
             case buttons[1].divElement:
-                //only trigger mouseup if there is a corresponding mousedown
-                if (buttons[1].pressed === true) {
-
-
-                    game.responses++;
-                    game.gameLost = checkAnswer(game, 1);
-
-                    if (game.gameLost) {
-                        exitGame(game);
-                    }
-
-                    if (game.roundWon) {
-                        setTimeout(() => newRound(game), 1000);
-                        
-                    }
-
-                }
-
-
-
+                justClicked = 1;
                 break;
 
                 //yellow button was clicked
             case buttons[2].divElement:
-                //only trigger mouseup if there is a corresponding mousedown
-                if (buttons[2].pressed === true) {
-
-
-                    game.responses++;
-                    game.gameLost = checkAnswer(game, 2);
-
-                    if (game.gameLost) {
-                        exitGame(game);
-                    }
-
-                    if (game.roundWon) {
-                        setTimeout(() => newRound(game), 1000);
-                        
-                    }
-
-                }
-
-
-
+                justClicked = 2;
                 break;
 
                 //blue button was clicked
             case buttons[3].divElement:
-                //only trigger mouseup if there is a corresponding mousedown
-                if (buttons[3].pressed === true) {
-
-
-                    game.responses++;
-                    game.gameLost = checkAnswer(game, 3);
-
-                    if (game.gameLost) {
-                        exitGame(game);
-                    }
-
-                    if (game.roundWon) {
-                        setTimeout(() => newRound(game), 1000);
-                        
-                    }
-
-                }
-
-
-
+                justClicked = 3;
                 break;
 
 
         } //end switch
+
+    
+        //only trigger mouseup if there is a corresponding mousedown
+        if (buttons[justClicked].pressed === true) {
+
+            game.responses++;
+            game.gameLost = checkAnswer(game, justClicked);
+
+            if (game.gameLost) {
+                exitGame(game);
+            }
+
+            if (game.roundWon) {
+                setTimeout(() => newRound(game), 1000);
+            }
+        }
+
 
         //reset the pressed variables
         buttons[0].pressed = false;
@@ -194,7 +136,7 @@ function SimonButton(normalClass, litClass) {
 
     //only assigned true if a mousedown event occurs on the button
     this.pressed = false;
-    
+
 }
 
 
@@ -225,7 +167,7 @@ function GameState() {
 
     //user is only allowed to click buttons after the lights have finished lighting
     this.allowUserInput = false;
-    
+
     //this records the number of responses a player has made
     //for the current round
     this.responses = 0;
@@ -242,7 +184,7 @@ function newGame() {
     game = new GameState();
 
     newRound(game);
-    
+
 }
 
 
@@ -374,8 +316,8 @@ function blinkLight(buttonNum, duration) {
 //answer. Returns true if correct, false if incorrect.
 function checkAnswer(currentgame, button) {
 
-    
-    
+
+
     //if the button just clicked is not the next one in the sequence
     //then answer was incorrect, the game is over
     if (currentgame.sequence[currentgame.responses - 1] !== button) {
@@ -401,7 +343,7 @@ function newRound(currentgame) {
 
     //disable the new game button for the duration of the lights being displayed
     document.getElementById("new-game-button").setAttribute("disabled", "");
-    
+
     //reset these variables at the start of a new round
     currentgame.responses = 0;
     currentgame.roundWon = false;
@@ -415,12 +357,12 @@ function newRound(currentgame) {
     //need to know when the lights have finished displaying
     //sequence finished after (X*1000) - 500 milliseconds where X is sequence length
     setTimeout(function() {
-        
+
         //re-enable new game button when lights have all lit
         document.getElementById("new-game-button").removeAttribute("disabled");
 
         currentgame.allowUserInput = true;
-        
+
     }, ((currentgame.sequence.length) * 1000) - 500);
 
 }
