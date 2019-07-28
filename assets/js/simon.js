@@ -105,7 +105,7 @@ document.addEventListener("mouseup", function(event) {
 
                 //disable the new game button
                 document.getElementById("new-game-button").setAttribute("disabled", "");
-                
+
                 game.allowUserInput = false;
                 setTimeout(() => newRound(game), 1000);
 
@@ -186,16 +186,26 @@ var game = {};
 
 //functionality for when new game is pressed
 function newGame() {
-    
+
+    var startGameDelay = 1000;
+
     //on new game, light all lights for a short duration before starting
-    
+    blinkLight(0, startGameDelay);
+    blinkLight(1, startGameDelay);
+    blinkLight(2, startGameDelay);
+    blinkLight(3, startGameDelay);
 
     game = new GameState();
 
     //new game button disabled after pressing it
     document.getElementById("new-game-button").setAttribute("disabled", "");
 
-    newRound(game);
+    //start of game is delayed briefly, slightly longer than the lights are on for
+    setTimeout(function() {
+
+        newRound(game);
+
+    }, 1.5*startGameDelay);
 
 }
 
