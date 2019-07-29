@@ -198,8 +198,9 @@ function newGame() {
     blinkLight(2, startGameDelay);
     blinkLight(3, startGameDelay);
     
-    //reset current score html
+    //reset current score and game over html
     document.getElementById("current-score").innerHTML = "";
+    document.getElementById("game-over").innerHTML = "";
     
 
     game = new GameState();
@@ -396,5 +397,7 @@ function newRound(currentgame) {
 function exitGame(currentgame) {
 
     currentgame.allowUserInput = false;
-    console.log("GAME OVER");
+    
+    //display game over html
+    document.getElementById("game-over").innerHTML = "GAME OVER";
 }
