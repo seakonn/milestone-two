@@ -198,6 +198,9 @@ function newGame() {
     blinkLight(2, startGameDelay);
     blinkLight(3, startGameDelay);
     
+    //update the high score if necessary
+    checkHighScore();
+    
     //reset some html
     document.getElementById("current-score").innerHTML = "0";
     document.getElementById("game-over").innerHTML = "";
