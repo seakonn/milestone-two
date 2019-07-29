@@ -198,9 +198,10 @@ function newGame() {
     blinkLight(2, startGameDelay);
     blinkLight(3, startGameDelay);
     
-    //reset current score and game over html
-    document.getElementById("current-score").innerHTML = "";
+    //reset some html
+    document.getElementById("current-score").innerHTML = "0";
     document.getElementById("game-over").innerHTML = "";
+    document.getElementById("hs-alert").innerHTML = "";
     
 
     game = new GameState();
@@ -400,4 +401,20 @@ function exitGame(currentgame) {
     
     //display game over html
     document.getElementById("game-over").innerHTML = "GAME OVER";
+    checkHighScore();
+}
+
+function checkHighScore() {
+    
+    var currentScore = parseInt(document.getElementById("current-score").innerHTML);
+    var highScore = parseInt(document.getElementById("high-score").innerHTML);
+    
+    
+    //if we have beaten the high score, then update the high score
+    if(currentScore > highScore) {
+        
+        document.getElementById("high-score").innerHTML = currentScore;
+        document.getElementById("hs-alert").innerHTML = "NEW HIGH SCORE!";
+        
+    }
 }
