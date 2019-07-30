@@ -1,47 +1,55 @@
 .green-button {
     background-color: green;
-    width: 200px;
-    height: 200px;
+    width: 80%;
+    height: 25vh;
+    border-radius: 10%;
 }
 
 .red-button {
     background-color: red;
-    width: 200px;
-    height: 200px;
+    width: 80%;
+    height: 25vh;
+    border-radius: 10%;
 }
 
 .yellow-button {
     background-color: yellow;
-    width: 200px;
-    height: 200px;
+    width: 80%;
+    height: 25vh;
+    border-radius: 10%;
 }
 
 .blue-button {
     background-color: blue;
-    width: 200px;
-    height: 200px;
+    width: 80%;
+    height: 25vh;
+    border-radius: 10%;
 }
 
 .lit-green-button {
     background-color: #afffab;
-    width: 200px;
-    height: 200px;
+    width: 80%;
+    height: 25vh;
+    border-radius: 10%;
 }
 
 .lit-red-button {
     background-color: #ff8080;
-    width: 200px;
-    height: 200px;
+    width: 80%;
+    height: 25vh;
+    border-radius: 10%;
 }
 
 .lit-yellow-button {
     background-color: #fffd94;
-    width: 200px;
-    height: 200px;
+    width: 80%;
+    height: 25vh;
+    border-radius: 10%;
 }
 
 .lit-blue-button {
     background-color: #8383f7;
-    width: 200px;
-    height: 200px;
+    width: 80%;
+    height: 25vh;
+    border-radius: 10%;
 }
