@@ -1,55 +1,55 @@
 .green-button {
     background-color: green;
-    width: 80%;
-    height: 25vh;
+    width: 40vw;
+    height: 40vw;
     border-radius: 10%;
 }
 
 .red-button {
     background-color: red;
-    width: 80%;
-    height: 25vh;
+    width: 40vw;
+    height: 40vw;
     border-radius: 10%;
 }
 
 .yellow-button {
     background-color: yellow;
-    width: 80%;
-    height: 25vh;
+    width: 40vw;
+    height: 40vw;
     border-radius: 10%;
 }
 
 .blue-button {
     background-color: blue;
-    width: 80%;
-    height: 25vh;
+    width: 40vw;
+    height: 40vw;
     border-radius: 10%;
 }
 
 .lit-green-button {
     background-color: #afffab;
-    width: 80%;
-    height: 25vh;
+    width: 40vw;
+    height: 40vw;
     border-radius: 10%;
 }
 
 .lit-red-button {
     background-color: #ff8080;
-    width: 80%;
-    height: 25vh;
+    width: 40vw;
+    height: 40vw;
     border-radius: 10%;
 }
 
 .lit-yellow-button {
     background-color: #fffd94;
-    width: 80%;
-    height: 25vh;
+    width: 40vw;
+    height: 40vw;
     border-radius: 10%;
 }
 
 .lit-blue-button {
     background-color: #8383f7;
-    width: 80%;
-    height: 25vh;
+    width: 40vw;
+    height: 40vw;
     border-radius: 10%;
 }
