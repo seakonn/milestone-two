@@ -2,6 +2,8 @@
     background-color: green;
     width: 40vw;
     height: 40vw;
+    max-width: 180px;
+    max-height: 180px;
     border-radius: 10%;
 }
 
@@ -9,6 +11,8 @@
     background-color: red;
     width: 40vw;
     height: 40vw;
+    max-width: 180px;
+    max-height: 180px;
     border-radius: 10%;
 }
 
@@ -16,6 +20,8 @@
     background-color: yellow;
     width: 40vw;
     height: 40vw;
+    max-width: 180px;
+    max-height: 180px;
     border-radius: 10%;
 }
 
@@ -23,6 +29,8 @@
     background-color: blue;
     width: 40vw;
     height: 40vw;
+    max-width: 180px;
+    max-height: 180px;
     border-radius: 10%;
 }
 
@@ -30,6 +38,8 @@
     background-color: #afffab;
     width: 40vw;
     height: 40vw;
+    max-width: 180px;
+    max-height: 180px;
     border-radius: 10%;
 }
 
@@ -37,6 +47,8 @@
     background-color: #ff8080;
     width: 40vw;
     height: 40vw;
+    max-width: 180px;
+    max-height: 180px;
     border-radius: 10%;
 }
 
@@ -44,6 +56,8 @@
     background-color: #fffd94;
     width: 40vw;
     height: 40vw;
+    max-width: 180px;
+    max-height: 180px;
     border-radius: 10%;
 }
 
@@ -51,5 +65,7 @@
     background-color: #8383f7;
     width: 40vw;
     height: 40vw;
+    max-width: 180px;
+    max-height: 180px;
     border-radius: 10%;
 }
