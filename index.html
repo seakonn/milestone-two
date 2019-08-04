@@ -24,8 +24,35 @@
         </div>
         <div class="row">
             <div class="col d-flex justify-content-around">
-                <button id="new-game-button">New Game</button>
-                <button>How To Play</button>
+
+                <button id="new-game-button" class="btn">New Game</button>
+
+                <button type="button" class="btn" data-toggle="modal" data-target="#howToPlay">How To Play</button>
+
+                <!-- Code for Modal -->
+                <div class="modal fade" id="howToPlay" tabindex="-1" role="dialog" aria-labelledby="howToPlayLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="howToPlayLabel">How To Play</h5>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Simon is a game which tests your ability to memorise a sequence of colours. </p>
+                                <p>To play, all you have to do is click or tap the colours in the order they appear. Each time you get a sequence correct, it gets longer by one. See how high a score you can get!</p>
+
+                                <p>Press the new game button to start playing.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
