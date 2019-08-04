@@ -1,3 +1,11 @@
+#simon-header {
+    margin: 1rem 0;
+}
+
+#new-game-button, #how-to-play-button {
+    margin: 1rem 0;
+}
+
 .green-button {
     background-color: green;
     width: 40vw;
