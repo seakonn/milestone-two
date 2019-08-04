@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col d-flex justify-content-center">
-                <h1>Simon</h1>
+                <h1 id="simon-header">Simon</h1>
             </div>
         </div>
         <div class="row">
@@ -27,7 +27,7 @@
 
                 <button id="new-game-button" class="btn">New Game</button>
 
-                <button type="button" class="btn" data-toggle="modal" data-target="#howToPlay">How To Play</button>
+                <button id="how-to-play-button" type="button" class="btn" data-toggle="modal" data-target="#howToPlay">How To Play</button>
 
                 <!-- Code for Modal -->
                 <div class="modal fade" id="howToPlay" tabindex="-1" role="dialog" aria-labelledby="howToPlayLabel" aria-hidden="true">
@@ -82,8 +82,8 @@
     <div class="container">
         <div class="row">
             <div class="col d-flex justify-content-around">
-                <p>Current Score: <span id="current-score">0</span></p>
-                <p>High Score: <span id="high-score">0</span></p>
+                <p class="score-text">Current Score: <span id="current-score">0</span></p>
+                <p class="score-text">High Score: <span id="high-score">0</span></p>
 
             </div>
         </div>
