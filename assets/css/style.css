@@ -13,17 +13,19 @@
     width: 95vw;
     height: 95vw;
     border-radius: 10%;
+    max-height: 450px;
+    max-width: 450px;
 
 }
 
 .green-button {
 
     position: absolute;
-    left: 5vw;
-    top: 5vw;
+    left: 5%;
+    top: 5%;
     background-color: green;
-    width: 40vw;
-    height: 40vw;
+    width: 40%;
+    height: 40%;
     max-width: 180px;
     max-height: 180px;
     border-radius: 10%;
@@ -31,11 +33,11 @@
 
 .red-button {
     position: absolute;
-    left: 50vw;
-    top: 5vw;
+    left: 50%;
+    top: 5%;
     background-color: red;
-    width: 40vw;
-    height: 40vw;
+    width: 40%;
+    height: 40%;
     max-width: 180px;
     max-height: 180px;
     border-radius: 10%;
@@ -43,11 +45,11 @@
 
 .yellow-button {
     position: absolute;
-    bottom: 5vw;
-    left: 5vw;
+    bottom: 5%;
+    left: 5%;
     background-color: yellow;
-    width: 40vw;
-    height: 40vw;
+    width: 40%;
+    height: 40%;
     max-width: 180px;
     max-height: 180px;
     border-radius: 10%;
@@ -55,11 +57,11 @@
 
 .blue-button {
     position: absolute;
-    left: 50vw;
-    bottom: 5vw;
+    left: 50%;
+    bottom: 5%;
     background-color: blue;
-    width: 40vw;
-    height: 40vw;
+    width: 40%;
+    height: 40%;
     max-width: 180px;
     max-height: 180px;
     border-radius: 10%;
@@ -67,11 +69,11 @@
 
 .lit-green-button {
     position: absolute;
-    left: 5vw;
-    top: 5vw;
+    left: 5%;
+    top: 5%;
     background-color: #afffab;
-    width: 40vw;
-    height: 40vw;
+    width: 40%;
+    height: 40%;
     max-width: 180px;
     max-height: 180px;
     border-radius: 10%;
@@ -79,11 +81,11 @@
 
 .lit-red-button {
     position: absolute;
-    left: 50vw;
-    top: 5vw;
+    left: 50%;
+    top: 5%;
     background-color: #ff8080;
-    width: 40vw;
-    height: 40vw;
+    width: 40%;
+    height: 40%;
     max-width: 180px;
     max-height: 180px;
     border-radius: 10%;
@@ -91,11 +93,11 @@
 
 .lit-yellow-button {
     position: absolute;
-    bottom: 5vw;
-    left: 5vw;
+    bottom: 5%;
+    left: 5%;
     background-color: #fffd94;
-    width: 40vw;
-    height: 40vw;
+    width: 40%;
+    height: 40%;
     max-width: 180px;
     max-height: 180px;
     border-radius: 10%;
@@ -103,11 +105,11 @@
 
 .lit-blue-button {
     position: absolute;
-    left: 50vw;
-    bottom: 5vw;
+    left: 50%;
+    bottom: 5%;
     background-color: #8383f7;
-    width: 40vw;
-    height: 40vw;
+    width: 40%;
+    height: 40%;
     max-width: 180px;
     max-height: 180px;
     border-radius: 10%;
