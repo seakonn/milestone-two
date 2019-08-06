@@ -8,12 +8,19 @@
 }
 
 #game-board {
-    background-color: brown;
+    
+    background-color: #3a3838;
+    width: 95vw;
+    height: 95vw;
+    border-radius: 10%;
+
 }
 
 .green-button {
 
     position: absolute;
+    left: 5vw;
+    top: 5vw;
     background-color: green;
     width: 40vw;
     height: 40vw;
@@ -24,6 +31,8 @@
 
 .red-button {
     position: absolute;
+    left: 50vw;
+    top: 5vw;
     background-color: red;
     width: 40vw;
     height: 40vw;
@@ -34,6 +43,8 @@
 
 .yellow-button {
     position: absolute;
+    bottom: 5vw;
+    left: 5vw;
     background-color: yellow;
     width: 40vw;
     height: 40vw;
@@ -44,6 +55,8 @@
 
 .blue-button {
     position: absolute;
+    left: 50vw;
+    bottom: 5vw;
     background-color: blue;
     width: 40vw;
     height: 40vw;
@@ -54,6 +67,8 @@
 
 .lit-green-button {
     position: absolute;
+    left: 5vw;
+    top: 5vw;
     background-color: #afffab;
     width: 40vw;
     height: 40vw;
@@ -64,6 +79,8 @@
 
 .lit-red-button {
     position: absolute;
+    left: 50vw;
+    top: 5vw;
     background-color: #ff8080;
     width: 40vw;
     height: 40vw;
@@ -74,6 +91,8 @@
 
 .lit-yellow-button {
     position: absolute;
+    bottom: 5vw;
+    left: 5vw;
     background-color: #fffd94;
     width: 40vw;
     height: 40vw;
@@ -84,6 +103,8 @@
 
 .lit-blue-button {
     position: absolute;
+    left: 50vw;
+    bottom: 5vw;
     background-color: #8383f7;
     width: 40vw;
     height: 40vw;
