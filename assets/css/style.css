@@ -8,7 +8,7 @@
 }
 
 #game-board {
-    
+
     background-color: #3a3838;
     width: 95vw;
     height: 95vw;
@@ -19,99 +19,78 @@
 
 }
 
-.green-button {
+.simon-button {
 
     position: absolute;
+    width: 40%;
+    height: 40%;
+    max-width: 180px;
+    max-height: 180px;
+    border-radius: 10%;
+
+}
+
+.green-button {
+
+    
     left: 7.5%;
     top: 7.5%;
     background-color: green;
-    width: 40%;
-    height: 40%;
-    max-width: 180px;
-    max-height: 180px;
-    border-radius: 10%;
+
 }
 
 .red-button {
-    position: absolute;
+    
     left: 52.5%;
     top: 7.5%;
     background-color: red;
-    width: 40%;
-    height: 40%;
-    max-width: 180px;
-    max-height: 180px;
-    border-radius: 10%;
+    
 }
 
 .yellow-button {
-    position: absolute;
+    
     bottom: 7.5%;
     left: 7.5%;
     background-color: yellow;
-    width: 40%;
-    height: 40%;
-    max-width: 180px;
-    max-height: 180px;
-    border-radius: 10%;
+    
 }
 
 .blue-button {
-    position: absolute;
+    
     left: 52.5%;
     bottom: 7.5%;
     background-color: blue;
-    width: 40%;
-    height: 40%;
-    max-width: 180px;
-    max-height: 180px;
-    border-radius: 10%;
+    
 }
 
 .lit-green-button {
-    position: absolute;
+    
     left: 7.5%;
     top: 7.5%;
     background-color: #afffab;
-    width: 40%;
-    height: 40%;
-    max-width: 180px;
-    max-height: 180px;
-    border-radius: 10%;
+    
 }
 
 .lit-red-button {
-    position: absolute;
+    
     left: 52.5%;
     top: 7.5%;
     background-color: #ff8080;
-    width: 40%;
-    height: 40%;
-    max-width: 180px;
-    max-height: 180px;
-    border-radius: 10%;
+    
 }
 
 .lit-yellow-button {
-    position: absolute;
+    
     bottom: 7.5%;
     left: 7.5%;
     background-color: #fffd94;
-    width: 40%;
-    height: 40%;
-    max-width: 180px;
-    max-height: 180px;
-    border-radius: 10%;
+    
 }
 
 .lit-blue-button {
-    position: absolute;
+    
     left: 52.5%;
     bottom: 7.5%;
     background-color: #8383f7;
-    width: 40%;
-    height: 40%;
-    max-width: 180px;
-    max-height: 180px;
-    border-radius: 10%;
+    
 }
