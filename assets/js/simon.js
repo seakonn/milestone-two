@@ -154,10 +154,10 @@ function SimonButton(normalClass, litClass) {
 //number generator, so each colour can be identified
 const buttons = [
 
-    new SimonButton("green-button", "lit-green-button"),
-    new SimonButton("red-button", "lit-red-button"),
-    new SimonButton("yellow-button", "lit-yellow-button"),
-    new SimonButton("blue-button", "lit-blue-button")
+    new SimonButton("green", "lit-green"),
+    new SimonButton("red", "lit-red"),
+    new SimonButton("yellow", "lit-yellow"),
+    new SimonButton("blue", "lit-blue")
 ];
 
 
