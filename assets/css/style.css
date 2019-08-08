@@ -11,6 +11,7 @@
 
 #game-board {
 
+    position: relative;
     background-color: #3a3838;
     width: 95vw;
     height: 95vw;
@@ -21,15 +22,15 @@
 .simon-button {
 
     position: absolute;
-    width: 40%;
-    height: 40%;
+    width: 41%;
+    height: 41%;
     border-radius: 10%;
 }
 
 .top-left {
 
-    left: 7.5%;
-    top: 7.5%;
+    left: 6%;
+    top: 6%;
 }
 
 .green {
@@ -44,8 +45,8 @@
 
 .top-right {
 
-    left: 52.5%;
-    top: 7.5%;
+    left: 53%;
+    top: 6%;
 }
 
 .red {
@@ -61,8 +62,8 @@
 
 .bottom-left {
 
-    bottom: 7.5%;
-    left: 7.5%;
+    bottom: 6%;
+    left: 6%;
 }
 
 .yellow {
@@ -77,8 +78,8 @@
 
 .bottom-right {
 
-    left: 52.5%;
-    bottom: 7.5%;
+    left: 53%;
+    bottom: 6%;
 }
 
 .blue {
