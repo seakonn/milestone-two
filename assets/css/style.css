@@ -1,11 +1,11 @@
 #simon-header {
-    
+
     margin: 1rem 0;
 }
 
 #new-game-button,
 #how-to-play-button {
-    
+
     margin: 1rem 0;
 }
 
@@ -15,8 +15,6 @@
     width: 95vw;
     height: 95vw;
     border-radius: 10%;
-    max-height: 450px;
-    max-width: 450px;
     margin-left: 2.5vw;
 }
 
@@ -25,8 +23,6 @@
     position: absolute;
     width: 40%;
     height: 40%;
-    max-width: 180px;
-    max-height: 180px;
     border-radius: 10%;
 }
 
@@ -37,60 +33,102 @@
 }
 
 .green {
-    
+
     background-color: green;
 }
 
 .lit-green {
-    
-   background-color: #afffab;
+
+    background-color: #afffab;
 }
 
 .top-right {
-    
+
     left: 52.5%;
     top: 7.5%;
 }
 
 .red {
-    
+
     background-color: red;
 }
 
 .lit-red {
-    
+
     background-color: #ff8080;
-    
+
 }
 
 .bottom-left {
-    
+
     bottom: 7.5%;
     left: 7.5%;
 }
 
 .yellow {
-    
+
     background-color: #cdcd15;
 }
 
 .lit-yellow {
-    
+
     background-color: #ffff82;
 }
 
 .bottom-right {
-    
+
     left: 52.5%;
     bottom: 7.5%;
 }
 
 .blue {
-    
+
     background-color: blue;
 }
 
 .lit-blue {
-    
+
     background-color: #8383f7;
+}
+
+@media (min-width: 576px) {
+
+    #game-board {
+
+        width: 546px;
+        height: 546px;
+        margin-left: 14px;
+    }
+
+
+    .simon-button {
+
+        width: 230px;
+        height: 230px;
+        border-radius: 10%;
+    }
+
+    .top-left {
+
+        left: 43px;
+        top: 43px;
+    }
+
+    .top-right {
+
+        left: 302px;
+        top: 43px;
+    }
+
+    .bottom-left {
+
+        bottom: 43px;
+        left: 43px;
+    }
+
+    .bottom-right {
+
+        left: 302px;
+        bottom: 43px;
+    }
 }
