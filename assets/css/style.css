@@ -104,32 +104,32 @@
 
     .simon-button {
 
-        width: 230px;
-        height: 230px;
+        width: 224px;
+        height: 224px;
         border-radius: 10%;
     }
 
     .top-left {
 
-        left: 43px;
-        top: 43px;
+        left: 33px;
+        top: 33px;
     }
 
     .top-right {
 
-        left: 302px;
-        top: 43px;
+        left: 289px;
+        top: 33px;
     }
 
     .bottom-left {
 
-        bottom: 43px;
-        left: 43px;
+        bottom: 33px;
+        left: 33px;
     }
 
     .bottom-right {
 
-        left: 302px;
-        bottom: 43px;
+        left: 289px;
+        bottom: 33px;
     }
 }
