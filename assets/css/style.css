@@ -17,6 +17,17 @@ body {
     margin-bottom: 1rem;
 }
 
+#high-score, #current-score {
+    
+    font-size: 4rem;
+}
+
+.score-text {
+    
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+}
+
 #game-board {
 
     position: relative;
