@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
+
 #simon-header {
 
+    font-family: 'Varela Round', sans-serif;
     margin: 1rem 0;
 }
 
