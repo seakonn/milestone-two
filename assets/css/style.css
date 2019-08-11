@@ -6,37 +6,41 @@ body {
 
 #simon-header {
 
-    font-size: 4rem;
+    font-size: 3rem;
     margin-top: 0.5rem;
-    
+
 }
 
 #new-game-button,
 #how-to-play-button {
+
+    font-size: 1.1rem;
 
     margin-bottom: 1rem;
     margin-left: 2.5vw;
     margin-right: 2.5vw;
 }
 
-#high-score, #current-score {
-    
-    font-size: 4rem;
+#high-score,
+#current-score {
+
+    font-size: 3rem;
 }
 
 .score-text {
-    
-    font-size: 1.25rem;
+
+    font-size: 1.1rem;
     margin: 0.5rem 0;
 }
 
-#game-over, #hs-alert {
-    
+#game-over,
+#hs-alert {
+
     /* always want these to appear over the game board */
     z-index: 1;
     position: relative;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 #game-board {
@@ -53,7 +57,7 @@ body {
     align-items: center;
     max-height: 450px;
     max-width: 450px;
-    
+
 }
 
 .simon-button {
@@ -131,5 +135,35 @@ body {
 
 @media (min-width: 576px) {
 
-    
+
+
+    #new-game-button,
+    #how-to-play-button {
+
+        font-size: 1.25rem;
+    }
+
+    #simon-header {
+
+        font-size: 4rem;
+    }
+
+    #high-score,
+    #current-score {
+
+        font-size: 4rem;
+    }
+
+    .score-text {
+
+        font-size: 1.25rem;
+
+    }
+
+    #game-over,
+    #hs-alert {
+
+        font-size: 2.5rem;
+
+    }
 }
