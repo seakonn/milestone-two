@@ -7,12 +7,46 @@ document.getElementById("new-game-button").addEventListener("click", function() 
 
 
 //when the mouse button is depressed, the colour changes to lit state
-document.addEventListener("mousedown", function(event) {
+document.addEventListener("mousedown", mouseDown);
 
+document.addEventListener("touchstart", touchDown);
+
+let isTouchScreen = false;
+
+function mouseDown(e) {
+    
+    /** because a touch screen fires both touch and mouse events, 
+     *  we do not want this code to run if the user is using a
+     *  touch screen
+     */
+    if(!isTouchScreen) {
+        
+        downHandler(e);
+    }
+    
+}
+
+function touchDown(e) {
+    
+    isTouchScreen = true;
+    
+    downHandler(e);
+    
+}
+
+
+function downHandler(event) {
+
+   if(event === "touchstart") {
+       isTouchScreen = true;
+   }
+   
+    console.log(event);
     //button is only allowed to be pressed if the light sequence has finished
     if (game.allowUserInput === true) {
 
 
+ 
         //checks to see which button (if any) were pressed
         switch (event.target) {
 
@@ -42,13 +76,40 @@ document.addEventListener("mousedown", function(event) {
 
         }
     }
-
-});
+}
 
 
 //when the mouse button is released, colour goes back to normal
 //checks to see if the user clicked the right button in the sequence
-document.addEventListener("mouseup", function(event) {
+document.addEventListener("mouseup", mouseUp);
+
+document.addEventListener("touchend", touchUp);
+
+function mouseUp(e) {
+    
+    /** because a touch screen fires both touch and mouse events, 
+     *  we do not want this code to run if the user is using a
+     *  touch screen
+     */
+    if(!isTouchScreen) {
+        
+        upHandler(e);
+    }
+    
+}
+
+function touchUp(e) {
+    
+    isTouchScreen = true;
+    
+    upHandler(e);
+    
+}
+
+
+function upHandler(event) {
+
+    
 
     if (game.allowUserInput === true) {
 
@@ -125,7 +186,8 @@ document.addEventListener("mouseup", function(event) {
 
     }
 
-});
+
+}
 
 
 
@@ -197,15 +259,15 @@ function newGame() {
     blinkLight(1, startGameDelay);
     blinkLight(2, startGameDelay);
     blinkLight(3, startGameDelay);
-    
+
     //update the high score if necessary
     checkHighScore();
-    
+
     //reset some html
     document.getElementById("current-score").innerHTML = "0";
     document.getElementById("game-over").innerHTML = "";
     document.getElementById("hs-alert").innerHTML = "";
-    
+
 
     game = new GameState();
 
@@ -217,7 +279,7 @@ function newGame() {
 
         newRound(game);
 
-    }, 1.5*startGameDelay);
+    }, 1.5 * startGameDelay);
 
 }
 
@@ -298,7 +360,6 @@ function lightSequence(currentgame) {
 //it takes in a number, which is used to find its corresponding class
 //it assumes that one of the classes supplied is already applied
 function swapLitClass(buttonNumber) {
-
 
     var currentButton;
 
@@ -401,23 +462,23 @@ function newRound(currentgame) {
 function exitGame(currentgame) {
 
     currentgame.allowUserInput = false;
-    
+
     //display game over html
     document.getElementById("game-over").innerHTML = "GAME OVER";
     checkHighScore();
 }
 
 function checkHighScore() {
-    
+
     var currentScore = parseInt(document.getElementById("current-score").innerHTML);
     var highScore = parseInt(document.getElementById("high-score").innerHTML);
-    
-    
+
+
     //if we have beaten the high score, then update the high score
-    if(currentScore > highScore) {
-        
+    if (currentScore > highScore) {
+
         document.getElementById("high-score").innerHTML = currentScore;
         document.getElementById("hs-alert").innerHTML = "NEW HIGH SCORE!";
-        
+
     }
 }
