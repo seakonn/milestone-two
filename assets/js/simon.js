@@ -112,14 +112,14 @@ function upHandler(event) {
 
         //want the colour to change back regardless of where mouseup occurs
         //if green pressed, toggle green etc
-        for (var i = 0; i < buttons.length; i++) {
+        for (let i = 0; i < buttons.length; i++) {
 
             if (buttons[i].pressed === true) {
                 swapLitClass(i);
             }
         }
 
-        var justClicked = 0;
+        let justClicked = 0;
 
         //checks to see which button (if any) were pressed
         switch (event.target) {
@@ -243,12 +243,12 @@ function GameState() {
 }
 
 //used to refer to the current game state
-var game = {};
+let game = {};
 
 //functionality for when new game is pressed
 function newGame() {
 
-    var startGameDelay = 1000;
+    let startGameDelay = 1000;
 
     //on new game, light all lights for a short duration before starting
     blinkLight(0, startGameDelay);
@@ -285,17 +285,17 @@ function newGame() {
 function lightSequence(currentgame) {
 
     //the duration in ms for how long each light is lit for
-    var timeLit = 500;
+    let timeLit = 500;
 
     //light all the lights lit so far
     //go through sequence array and call swapLitClass
-    var sequenceLength = currentgame.sequence.length;
+    let sequenceLength = currentgame.sequence.length;
 
     //picks a random number between 1 and 4
-    var randomNumber = Math.floor(Math.random() * 4);
+    let randomNumber = Math.floor(Math.random() * 4);
 
-    var firstLight; //will be initilised shortly
-    var isRandomLit = false; //will only change if this is the first iteration
+    let firstLight; //will be initilised shortly
+    let isRandomLit = false; //will only change if this is the first iteration
 
     //If this is the first round of the game, the first light
     //will be random
@@ -357,7 +357,7 @@ function lightSequence(currentgame) {
 //it assumes that one of the classes supplied is already applied
 function swapLitClass(buttonNumber) {
 
-    var currentButton;
+    let currentButton;
 
     //this passes in the number and assigns currentButton
     //to the button associated with it
@@ -466,8 +466,8 @@ function exitGame(currentgame) {
 
 function checkHighScore() {
 
-    var currentScore = parseInt(document.getElementById("current-score").innerHTML);
-    var highScore = parseInt(document.getElementById("high-score").innerHTML);
+    let currentScore = parseInt(document.getElementById("current-score").innerHTML);
+    let highScore = parseInt(document.getElementById("high-score").innerHTML);
 
 
     //if we have beaten the high score, then update the high score
