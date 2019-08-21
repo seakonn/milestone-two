@@ -1,12 +1,8 @@
-//want know when new game button is pressed
-
 document.getElementById("new-game-button").addEventListener("click", function() {
 
     newGame();
 });
 
-
-//when the mouse button is depressed, the colour changes to lit state
 document.addEventListener("mousedown", mouseDown);
 
 document.addEventListener("touchstart", touchDown);
@@ -41,7 +37,7 @@ function downHandler(event) {
        isTouchScreen = true;
    }
    
-    console.log(event);
+    
     //button is only allowed to be pressed if the light sequence has finished
     if (game.allowUserInput === true) {
 
