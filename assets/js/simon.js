@@ -50,7 +50,6 @@ function downHandler(event) {
                 swapLitClass(i);
                 break;
             }
-            console.log(i);
         }
     }
 }
@@ -99,29 +98,13 @@ function upHandler(event) {
         let justClicked = 0;
 
         //checks to see which button (if any) were pressed
-        switch (event.target) {
-
+        for(let i=0; i<buttons.length; i++) {
             
-            case buttons[0].divElement:
-                justClicked = 0;
+            if(event.target === buttons[i].divElement) {
+                
+                justClicked = i;
                 break;
-
-            
-            case buttons[1].divElement:
-                justClicked = 1;
-                break;
-
-            
-            case buttons[2].divElement:
-                justClicked = 2;
-                break;
-
-            
-            case buttons[3].divElement:
-                justClicked = 3;
-                break;
-
-
+            }
         } 
 
 
@@ -247,11 +230,13 @@ function lightSequence(currentgame) {
     let isRandomLit = false; 
 
     if (sequenceLength === 0) {
+        
         firstLight = randomNumber;
         isRandomLit = true;
     }
 
     else {
+        
         firstLight = currentgame.sequence[0];
     }
 
