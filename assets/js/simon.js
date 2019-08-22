@@ -83,8 +83,6 @@ function touchUp(e) {
 
 function upHandler(event) {
 
-    
-
     if (game.allowUserInput === true) {
 
 
@@ -189,11 +187,11 @@ function newGame() {
 
     let startGameDelay = 1000;
 
-    blinkLight(0, startGameDelay);
-    blinkLight(1, startGameDelay);
-    blinkLight(2, startGameDelay);
-    blinkLight(3, startGameDelay);
-
+    for(let i=0; i<4; i++) {
+        
+        blinkLight(i, startGameDelay);
+    }
+    
     checkHighScore();
 
     document.getElementById("current-score").innerHTML = "0";
