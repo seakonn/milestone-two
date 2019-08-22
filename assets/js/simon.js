@@ -147,19 +147,12 @@ function upHandler(event) {
             }
         }
 
-
-        
-        buttons[0].pressed = false;
-        buttons[1].pressed = false;
-        buttons[2].pressed = false;
-        buttons[3].pressed = false;
-
-
+        for(let i=0; i<buttons.length; i++) {
+            
+            buttons[i].pressed = false;
+        }
     }
-
-
 }
-
 
 
 /** creating button objects to store values associated with them
