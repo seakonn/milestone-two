@@ -41,35 +41,16 @@ function downHandler(event) {
     //button is only allowed to be pressed if the light sequence has finished
     if (game.allowUserInput === true) {
 
-
- 
         //checks to see which button (if any) were pressed
-        switch (event.target) {
-
+        for(let i=0; i<buttons.length; i++) {
             
-            case buttons[0].divElement:
-                buttons[0].pressed = true;
-                swapLitClass(0);
+            if(event.target === buttons[i].divElement) {
+                
+                buttons[i].pressed = true;
+                swapLitClass(i);
                 break;
-
-            
-            case buttons[1].divElement:
-                buttons[1].pressed = true;
-                swapLitClass(1);
-                break;
-
-            
-            case buttons[2].divElement:
-                buttons[2].pressed = true;
-                swapLitClass(2);
-                break;
-
-            
-            case buttons[3].divElement:
-                buttons[3].pressed = true;
-                swapLitClass(3);
-                break;
-
+            }
+            console.log(i);
         }
     }
 }
