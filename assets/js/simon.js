@@ -281,26 +281,15 @@ function lightSequence(currentgame) {
 function swapLitClass(buttonNumber) {
 
     let currentButton;
-
-    switch (buttonNumber) {
-        case 0:
-            currentButton = buttons[0]; 
-            break;
-
-        case 1:
-            currentButton = buttons[1]; 
-            break;
-
-        case 2:
-            currentButton = buttons[2]; 
-            break;
-
-        case 3:
-            currentButton = buttons[3]; 
-            break;
-
+    
+    for(let i=0; i<buttons.length; i++) {
+        
+        if(buttonNumber === i) {
+            
+            currentButton = buttons[i];
+        }
     }
-
+    
     currentButton.divElement.classList.toggle(currentButton.normalClass);
     currentButton.divElement.classList.toggle(currentButton.litClass);
 
