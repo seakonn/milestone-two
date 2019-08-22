@@ -39,7 +39,7 @@ function downHandler(event) {
    
     
     //button is only allowed to be pressed if the light sequence has finished
-    if (game.allowUserInput === true) {
+    if (game.allowUserInput) {
 
         //checks to see which button (if any) were pressed
         for(let i=0; i<buttons.length; i++) {
@@ -83,12 +83,12 @@ function touchUp(e) {
 
 function upHandler(event) {
 
-    if (game.allowUserInput === true) {
+    if (game.allowUserInput) {
 
 
         for (let i = 0; i < buttons.length; i++) {
 
-            if (buttons[i].pressed === true) {
+            if (buttons[i].pressed) {
                 swapLitClass(i);
             }
         }
@@ -107,7 +107,7 @@ function upHandler(event) {
 
 
         //only trigger mouseup if there is a corresponding mousedown
-        if (buttons[justClicked].pressed === true) {
+        if (buttons[justClicked].pressed) {
 
             game.responses++;
             game.gameLost = checkAnswer(game, justClicked);
