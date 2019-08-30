@@ -67,26 +67,26 @@ I have to check to see if the user stories from the design section can be met by
 
 * As a user, I want to play the game, so I can experience it.
 
-Clicking the 'New Game' button will allow the user to play the game.
+  - Clicking the 'New Game' button will allow the user to play the game.
 
 * As a user, I want to know how to play the game, so I understand it.
 
-The 'How To play' button, when clicked, explains the rules of the game. The user can click anywhere outside of it to make the popup go away.
+  - The 'How To play' button, when clicked, explains the rules of the game. The user can click anywhere outside of it to make the popup go away.
 
 * As a user, I want to know how well I am doing so I can compare my scores.
 
-The highest score obtained so far can be easily seen at the bottom of the screen.
+  - The highest score obtained so far can be easily seen at the bottom of the screen.
 
 ### Game Logic
 
 This is to see if the game itself is behaving in the manner it is intended to.
 
 * When user input is allowed, button should change colour when pressed, and change back when released.
-	-Tested by pressing each button when allowed to. Buttons behave as they should.
+	- Tested by pressing each button when allowed to. Buttons behave as they should.
 * Game should display sequence of lights at start of new game/new round.
-	-Tested by playing the game. Lights display as intended.
+	- Tested by playing the game. Lights display as intended.
 * When user correctly presses buttons in a sequence, game should progress to next round
-	-Tested by playing the game. Sequences are identified correctly when matched.
+	- Tested by playing the game. Sequences are identified correctly when matched.
 * Game should not allow user input until light sequence is finished displaying
 	- Tested by clicking on the simon buttons while the light sequence is displaying. No response.
 * Game should not allow new game to be started until light sequence is finished displaying.
@@ -94,19 +94,19 @@ This is to see if the game itself is behaving in the manner it is intended to.
 * Game should keep going indefinitely
 	- Tested by playing the game as far as a sequence of 10. Assume that the game will continue after that point.
 * Current score should update at the end of a round
-	-Tested by playing the game. Can see current score changing as user progresses.
+	- Tested by playing the game. Can see current score changing as user progresses.
 * Current score should reset when new game pressed
-	-Tested by starting a new game after game already played. Current score displays zero.
+	- Tested by starting a new game after game already played. Current score displays zero.
 * Game should display a game over message
-	-Tested by getting a sequence wrong. Message displays on screen.
+	- Tested by getting a sequence wrong. Message displays on screen.
 * Game should display high score message when one is achieved.
-	-Tested by getting a higher score than the one displayed on the screen. Additional message displayed when game is lost.
+	- Tested by getting a higher score than the one displayed on the screen. Additional message displayed when game is lost.
 * Both game over and high score messages should disappear when starting a new round.
-	-Tested by playing & losing one game, then clicking new game. Messages disappear as expected.
+	- Tested by playing & losing one game, then clicking new game. Messages disappear as expected.
 * High score should update when a game ends
-	-Tested by getting a higher score than the one displayed on the screen. Score updates accordingly when a game is lost.
+	- Tested by getting a higher score than the one displayed on the screen. Score updates accordingly when a game is lost.
 * Touch screen should work as well as mouse based input.
-	-Tested by using a touch screen device to perform any of the above tests. Results obtained are the same.
+	- Tested by using a touch screen device to perform any of the above tests. Results obtained are the same.
 
 
 ### Responsiveness
