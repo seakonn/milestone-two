@@ -1,4 +1,5 @@
 const newGameButtonElement = document.getElementById("new-game-button");
+const currentScoreElement = document.getElementById("current-score");
 
 newGameButtonElement.addEventListener("click", function() {
 
@@ -124,7 +125,7 @@ function upHandler(event) {
 
                 newGameButtonElement.setAttribute("disabled", "");
 
-                document.getElementById("current-score").innerHTML = game.sequence.length;
+                currentScoreElement.innerHTML = game.sequence.length;
 
                 game.allowUserInput = false;
                 setTimeout(() => newRound(game), 1000);
@@ -198,7 +199,7 @@ function newGame() {
     
     checkHighScore();
 
-    document.getElementById("current-score").innerHTML = "0";
+    currentScoreElement.innerHTML = "0";
     document.getElementById("game-over").innerHTML = "";
     document.getElementById("hs-alert").innerHTML = "";
 
@@ -370,7 +371,7 @@ function exitGame(currentgame) {
 
 function checkHighScore() {
 
-    let currentScore = parseInt(document.getElementById("current-score").innerHTML);
+    let currentScore = parseInt(currentScoreElement.innerHTML);
     let highScore = parseInt(document.getElementById("high-score").innerHTML);
 
 
