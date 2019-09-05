@@ -24,6 +24,8 @@ These are potential actions that users of the website would want to perform.
 
 ![Desktop Wireframe](assets/wireframes/simon-picture.jpg "Desktop Wireframe")
 
+![Tablet Wireframe](assets/wireframes/simon-picture-tablet.jpg "Tablet Wireframe")
+
 ![Mobile Wireframe](assets/wireframes/simon-picture-mobile.jpg "Mobile Wireframe")
 
 ---
