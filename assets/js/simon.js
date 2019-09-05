@@ -1,5 +1,8 @@
 const newGameButtonElement = document.getElementById("new-game-button");
 const currentScoreElement = document.getElementById("current-score");
+const highScoreAlertElement = document.getElementById("hs-alert");
+const highScoreElement = document.getElementById("high-score");
+const gameOverElement = document.getElementById("game-over");
 
 newGameButtonElement.addEventListener("click", function() {
 
@@ -200,8 +203,8 @@ function newGame() {
     checkHighScore();
 
     currentScoreElement.innerHTML = "0";
-    document.getElementById("game-over").innerHTML = "";
-    document.getElementById("hs-alert").innerHTML = "";
+    gameOverElement.innerHTML = "";
+    highScoreAlertElement.innerHTML = "";
 
     game = new GameState();
 
@@ -364,7 +367,7 @@ function exitGame(currentgame) {
 
     currentgame.allowUserInput = false;
 
-    document.getElementById("game-over").innerHTML = "GAME OVER";
+    gameOverElement.innerHTML = "GAME OVER";
     checkHighScore();
 }
 
@@ -372,13 +375,13 @@ function exitGame(currentgame) {
 function checkHighScore() {
 
     let currentScore = parseInt(currentScoreElement.innerHTML);
-    let highScore = parseInt(document.getElementById("high-score").innerHTML);
+    let highScore = parseInt(highScoreElement.innerHTML);
 
 
     if (currentScore > highScore) {
 
-        document.getElementById("high-score").innerHTML = currentScore;
-        document.getElementById("hs-alert").innerHTML = "NEW HIGH SCORE!";
+        highScoreElement.innerHTML = currentScore;
+        highScoreAlertElement.innerHTML = "NEW HIGH SCORE!";
 
     }
 }
