@@ -153,5 +153,5 @@ The live website can be found at [this URL](https://seakonn.github.io/milestone-
 
 ### Code
 
-* Code for lightsLoop function copied and modified from https://scottiestech.info/2014/07/01/javascript-fun-looping-with-a-delay/ 
-* Various code snippets obtained from https://www.w3schools.com/
+* Code for lightsLoop function copied and modified from [Scotties Tech](https://scottiestech.info/2014/07/01/javascript-fun-looping-with-a-delay/)
+* Various code snippets obtained from [w3schools](https://www.w3schools.com/)
