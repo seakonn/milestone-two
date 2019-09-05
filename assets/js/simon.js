@@ -1,7 +1,11 @@
-document.getElementById("new-game-button").addEventListener("click", function() {
+const newGameButtonElement = document.getElementById("new-game-button");
+
+newGameButtonElement.addEventListener("click", function() {
 
     newGame();
 });
+
+
 
 document.addEventListener("mousedown", mouseDown);
 
@@ -118,7 +122,7 @@ function upHandler(event) {
 
             if (game.roundWon) {
 
-                document.getElementById("new-game-button").setAttribute("disabled", "");
+                newGameButtonElement.setAttribute("disabled", "");
 
                 document.getElementById("current-score").innerHTML = game.sequence.length;
 
@@ -200,7 +204,7 @@ function newGame() {
 
     game = new GameState();
 
-    document.getElementById("new-game-button").setAttribute("disabled", "");
+    newGameButtonElement.setAttribute("disabled", "");
 
     //start of game is delayed briefly, slightly longer than the lights are on for
     setTimeout(function() {
@@ -346,7 +350,7 @@ function newRound(currentgame) {
      */
     setTimeout(function() {
 
-        document.getElementById("new-game-button").removeAttribute("disabled");
+        newGameButtonElement.removeAttribute("disabled");
 
         currentgame.allowUserInput = true;
 
